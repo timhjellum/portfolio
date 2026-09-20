@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://timber-portfolio.netlify.app/sitemap.xml
