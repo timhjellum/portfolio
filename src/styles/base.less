@@ -1,0 +1,74 @@
+@layer fastsigns, mastercard, travel, underground-films, orlando-magic, base;
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  container-type: inline-size;
+font-family: var(--font-body); 
+}
+
+@media (min-width: 768px) {
+  /* one screen tall, no taller */
+  .horizontal__wrap {
+    height: 100dvh;
+    min-height: 0;
+  }
+  .horizontal__panel {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* panel = top bar + rule + hero (hero takes the rest) */
+  .horizontal__panel.fastsigns,
+  .horizontal__panel.mastercard > .horizontal__panel-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .horizontal__panel .topbar,
+  .horizontal__panel .rule {
+    flex: none;
+  }
+  .horizontal__panel.fastsigns .hero,
+  .horizontal__panel.mastercard .hero {
+    flex: 1 1 auto;
+    min-height: 0;
+    container-type: size;
+  }
+}
+
+/* ===== top bar ===== */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px clamp(20px, 6vw, 64px);
+
+  //border-bottom: 1px solid var(--line);
+  .meta {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 600;
+    display: none;
+  }
+}
+.rule {
+  height: 4px;
+  height: 1px;
+  width: 100%;
+  //border-bottom: 1px solid var(--line);
+  border-color: var(--line);
+  margin: 0;
+  padding: 0;
+}

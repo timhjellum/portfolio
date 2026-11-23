@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Self-hosted fonts — replaces styles/fonts.*.css (all Google Fonts imports)
+   Files live in /fonts/. Latin subset, WOFF2 only. All fonts SIL OFL 1.1.
+
+   5 families, 6 files (~188 KB total):
+     Inter (variable 100–900) .... body, kickers, case-study text
+     Merriweather 500 + italic ... landing rotating-text heading
+     Poppins 600 ................. display / tab headings
+     IBM Plex Mono 500 ........... eyebrows, numbers, credit card
+     Sora 800 .................... Mastercard hero h1
+   ========================================================================== */
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("../fonts/merriweather-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("../fonts/merriweather-500-italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/poppins-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* One weight serves both 400 and 500 requests (matches what renders today) */
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/ibm-plex-mono-500.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("../fonts/sora-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

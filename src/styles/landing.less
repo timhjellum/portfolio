@@ -1,0 +1,112 @@
+@layer landing {
+  main {
+    --grid-color: var(--blue);
+    --grid-size: 50px;
+    --line-width: 1px;
+    --blue: #087bff;
+    --blue-rgb: 96, 49, 154;
+    --muted: #8894a5;
+    --bg: #050609;
+    background-image:
+      linear-gradient(
+        rgba(var(--blue-rgb), 0.25) var(--line-width),
+        transparent var(--line-width),
+        transparent var(--line-width)
+      ),
+      linear-gradient(
+        90deg,
+        rgba(var(--blue-rgb), 0.25) var(--line-width),
+        transparent var(--line-width),
+        transparent var(--line-width)
+      );
+    background-color: #000;
+    background-size: var(--grid-size) var(--grid-size);
+    width: 100%;
+    height: 100%;
+    //animation: bg-scrolling 5s infinite;
+    //animation-timing-function: linear;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+  }
+
+  .landing {
+    min-height: 100vh;
+    width: 100%;
+    max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  [data-rotating-words] {
+    display: inline-block;
+    position: relative;
+  }
+
+  .rotating-text {
+    &__heading {
+      padding-left: 20px;
+      text-align: left;
+      letter-spacing: -0.02em;
+      margin: 0;
+
+      //.merriweather-<uniquifier> {
+      font-family: "Merriweather", serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      font-variation-settings: "wdth" 100;
+      color: #fff;
+      font-size: clamp(2.5em, 7.5vw, 4.5em);
+      font-weight: 500;
+      line-height: 1;
+      width: 21ch;
+    }
+
+    &__highlight {
+      //    color: oklch(0.724121 0.165625 20);
+      font-style: italic;
+    }
+
+    &__inner {
+      display: inline-block;
+    }
+
+    &__word {
+      display: block;
+      white-space: nowrap;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      background-image: linear-gradient(165deg, #2dfff9, #2dc5ff, #9300ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-box-decoration-break: clone;
+      padding-right: 0.08em; /* keeps the italic's last letter from being clipped */
+    }
+  }
+  .rotating-line {
+    padding-bottom: 0.1em;
+    margin-bottom: -0.1em;
+    white-space: nowrap;
+  }
+
+  .rotating-line-mask {
+    overflow-x: visible !important;
+    overflow-y: clip !important;
+  }
+}

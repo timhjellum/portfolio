@@ -1,0 +1,269 @@
+@layer mastercard {
+	:root {
+		--text-shadow: 0.1cqw 0.1cqw 0.1cqw #000000;
+		--bg: #0b0b0e;
+		--bg-panel: #131318;
+		--bg-panel-2: #1a1a22;
+		--text: #f4f3f6;
+		--text-dim: #a2a2ad;
+		--accent: #ff5f00;
+		--pop: #eb001b;
+
+		// credit card
+		--mc-yellow: #f79e1b;
+		--line: #232329;
+		--mastercard-red: #eb001b;
+		--mastercard-orange: #fa5e03;
+		--mastercard-circle-size: 7cqw;
+		--start: #454545;
+		--end: #121212;
+		--card-bg-1: #454545;
+		--card-bg-2: #121212;
+		--card-border: #333;
+		--bg-color-1: #0f0f1a;
+		--bg-color-2: #1a1a2e;
+		--bg-color-3: #16213e;
+		--max-width: 1280px;
+	}
+
+	.mastercard {
+		background: var(--bg);
+		color: var(--text);
+		font-family: var(--font-mono);
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		.hero {
+			width: 100%;
+			max-width: 1280px;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+			overflow: hidden;
+			display: flex;
+			background-size: cover;
+			container-type: size;
+
+			&:before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: 0;
+				background: rgba(11, 11, 14, 0.68);
+			}
+
+			&:after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: 2;
+				pointer-events: none;
+				background: linear-gradient(130deg,
+						#0b0b0e 0%,
+						rgba(11, 11, 14, 0.5) 58%,
+						rgba(11, 11, 14, 0.55) 62%,
+						rgba(11, 11, 14, 0.15) 100%);
+			}
+		}
+
+		.hero--inner {
+			position: relative;
+			/* no z-index here, so the overlay can sit between globe and text */
+			width: 100%;
+			display: grid;
+			grid-template-columns: 1fr;
+			align-items: center;
+			justify-items: center;
+			gap: clamp(40px, 7vw, 72px);
+			padding: clamp(48px, 9vw, 112px) clamp(20px, 6vw, 64px) clamp(64px, 10vw, 128px);
+			position: relative;
+			z-index: 3;
+
+			.kicker {
+				margin-bottom: 18px;
+			}
+
+			h1 {
+				margin: 0;
+				font-family: "Sora", sans-serif;
+				font-weight: 800;
+				/* widest line ("of Convention.") is ~7.3em, so this always fits the gutters */
+				font-size: 11.7vw;
+				line-height: 0.98;
+				letter-spacing: -0.03em;
+				color: var(--text);
+				text-shadow: 0 4px 32px rgba(0, 0, 0, 0.7);
+			}
+
+			h1>span {
+				display: block;
+				white-space: nowrap;
+			}
+
+			h1 em {
+				font-style: normal;
+				color: var(--accent);
+				background: linear-gradient(95deg,
+						var(--pop) 0%,
+						var(--accent) 55%,
+						var(--mc-yellow) 100%);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				text-shadow: none;
+				padding-bottom: 0.06em;
+			}
+
+			p {
+				font-size: clamp(1rem, 1.5vw, 1.15rem);
+				line-height: 1.65;
+				color: var(--text-dim);
+				max-width: 500px;
+				margin: 0;
+			}
+		}
+
+		.kicker {
+			font-family: "Inter", sans-serif;
+			font-weight: 700;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			font-size: 12px;
+			color: var(--accent);
+		}
+
+		.card {
+			background: var(--bg-panel);
+			border: 1px solid var(--line);
+			border-radius: 6px;
+		}
+
+		.tag {
+			font-size: 13px;
+			font-weight: 600;
+			padding: 8px 16px;
+			border-radius: 999px;
+			border: 1px solid var(--line);
+			background: var(--bg-panel);
+			color: var(--text-dim);
+			white-space: nowrap;
+		}
+
+		:focus-visible {
+			outline: 2px solid var(--accent);
+			outline-offset: 3px;
+		}
+
+		.hero-copy {
+			justify-self: start;
+			width: 100%;
+			position: relative;
+			z-index: 2;
+		}
+
+		.card-stage {
+			z-index: 1;
+		}
+
+		.hero-copy .kicker {
+			display: block;
+			margin-bottom: 20px;
+		}
+
+		/* card stage: floating 3D card + soft floor shadow */
+		.card-stage {
+			position: relative;
+			width: min(100%, 560px);
+			padding-bottom: 8%;
+		}
+
+		.card-stage::after {
+			content: "";
+			position: absolute;
+			left: 12%;
+			right: 12%;
+			bottom: 0;
+			height: 9%;
+			border-radius: 50%;
+			background: radial-gradient(closest-side,
+					rgba(0, 0, 0, 0.75),
+					rgba(0, 0, 0, 0));
+			filter: blur(6px);
+			z-index: -1;
+			animation: card-shadow 7s ease-in-out infinite;
+		}
+
+		.card-stage .perspective {
+			animation: card-float 7s ease-in-out infinite;
+		}
+
+		@media (min-width: 768px) {
+			.horizontal__panel.mastercard>.horizontal__panel-inner {
+				padding: 0;
+			}
+
+			.horizontal__panel.mastercard .hero--inner {
+				width: 100%;
+				height: 100%;
+				padding: clamp(16px, 7cqh, 112px) clamp(20px, 6cqw, 64px);
+				gap: clamp(16px, 4cqh, 72px);
+			}
+
+			.horizontal__panel.mastercard .hero--inner h1 {
+				font-size: min(11.7cqw, 13cqh);
+			}
+
+			.horizontal__panel.mastercard .card-stage {
+				width: min(100%, 560px, 52cqh);
+			}
+
+			.hero--inner {
+				grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+				justify-items: stretch;
+			}
+
+			.card-stage {
+				justify-self: end;
+			}
+
+			/* headline is allowed to run over the card on wide screens */
+			.hero--inner h1 {
+				font-size: min(7.5vw, 7.5rem);
+			}
+		}
+
+		@media (min-width: 916px) {
+			.horizontal__panel.fastsigns .hero-copy h1 {
+				font-size: min(8.6cqw, 17cqh, 7rem);
+			}
+
+			.horizontal__panel.fastsigns .globe-stage {
+				width: min(100%, 600px, 80cqh);
+			}
+
+			/* two columns: copy left, card right (see note about mastercard.less) */
+			.horizontal__panel.mastercard .hero--inner {
+				grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+				justify-items: stretch;
+			}
+
+			.horizontal__panel.mastercard .hero--inner h1 {
+				font-size: min(7.5cqw, 24cqh, 7.5rem);
+			}
+
+			.horizontal__panel.mastercard .card-stage {
+				width: min(100%, 560px, 105cqh);
+				justify-self: end;
+			}
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.card-stage .perspective,
+	.card-stage::after {
+		animation: none;
+	}
+}

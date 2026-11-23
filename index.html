@@ -1,415 +1,389 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Timber - Portfolio - Tim (Timber) Hjellum</title>
-    <meta name="title" content="Timber - Portfolio - Tim (Timber) Hjellum" />
-    <meta name="description" content="Timber Portfolio Case Study" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-    <meta name="revisit-after" content="30 days" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/merriweather-500.woff2" as="font" type="font/woff2" crossorigin>
 
-    <meta property="og:image:width" content="1280" />
-    <meta property="og:image:height" content="720" />
-    <meta property="og:locale" content="en_US" />
-    <link rel="icon" href="/favicon.ico" sizes="32x32">
-    <link rel="icon" href="/images/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="stylesheet" href="./style.css" />
-
-<title>Timber Portfolio</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380..700;1,9..144,380..600&family=Inter:wght@400;500;600;700;800&display=swap">
-<style>
-  :root{
-    --bg:#14110d;
-    --bg-panel:#1c1710;
-    --bg-panel-2:#241d14;
-    --text:#f3ece0;
-    --text-dim:#a89a86;
-    --accent:#d7a34a;
-    --line:#332a1c;
-  }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:"Inter",system-ui,sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  .display{
-    font-family:"Fraunces",serif;
-    line-height:1.05;
-    letter-spacing:-.01em;
-  }
-  .display em{ font-style:italic; font-weight:500; color:var(--accent); }
-  .kicker{
-    font-family:"Inter",sans-serif;
-    font-weight:700;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    font-size:12px;
-    color:var(--accent);
-  }
-  .tag{
-    font-size:12px;
-    font-weight:600;
-    padding:6px 12px;
-    border-radius:999px;
-    border:1px solid var(--line);
-    background:var(--bg-panel);
-    color:var(--text-dim);
-    white-space:nowrap;
-  }
-  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
-
-  .page{ display:flex; flex-direction:column; }
-
-  /* ===== top bar ===== */
-  .topbar{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:26px clamp(20px,6vw,64px);
-    border-bottom:1px solid var(--line);
-  }
-  .topbar .meta{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); font-weight:600; }
-
-  /* ===== hero ===== */
-  .hero{
-    position:relative;
-    padding:clamp(64px,11vw,110px) clamp(20px,6vw,64px) clamp(56px,9vw,84px);
-    background:radial-gradient(ellipse 80% 100% at 20% 0%, var(--bg-panel-2) 0%, var(--bg) 68%);
-    border-bottom:1px solid var(--line);
-  }
-  .hero-inner{ max-width:760px; }
-  .hero-inner .kicker{ margin-bottom:18px; display:block; }
-  .hero-inner h1{ font-size:clamp(2.4rem,5.6vw,4.4rem); margin:0 0 26px; color:var(--text); text-wrap:balance; }
-  .hero-inner p{ font-size:clamp(1rem,1.6vw,1.15rem); line-height:1.65; color:var(--text-dim); max-width:600px; margin:0; }
-
-  .rule{
-    height:4px;
-    background:linear-gradient(90deg, var(--accent), transparent 85%);
-  }
-
-  .stats{
-    display:flex; flex-wrap:wrap; gap:clamp(28px,5vw,56px);
-    padding:clamp(36px,6vw,52px) clamp(20px,6vw,64px);
-    border-bottom:1px solid var(--line);
-  }
-  .stat .num{ font-family:"Fraunces",serif; font-size:clamp(1.8rem,3.2vw,2.6rem); color:var(--accent); line-height:1; }
-  .stat .lbl{ margin-top:8px; font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--text-dim); font-weight:600; }
-
-  /* ===== directory ===== */
-  .directory{ padding:clamp(50px,8vw,76px) clamp(20px,6vw,64px) clamp(20px,4vw,40px); }
-
-  .cat{ margin-bottom:clamp(48px,7vw,68px); }
-  .cat-head{
-    display:flex; align-items:baseline; gap:16px; margin-bottom:26px;
-    border-bottom:1px solid var(--line); padding-bottom:14px;
-  }
-  .cat-head h2{ font-size:clamp(1.3rem,2.4vw,1.7rem); margin:0; color:var(--text); }
-  .cat-count{ font-size:12.5px; color:var(--text-dim); font-weight:600; letter-spacing:.04em; }
-
-  .proj-grid{
-    display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:18px;
-  }
-  @media (max-width:760px){ .proj-grid{ grid-template-columns:1fr; } }
-
-  .proj-card{
-    display:block; text-decoration:none; color:inherit;
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:10px;
-    overflow:hidden;
-    transition:transform .25s cubic-bezier(.16,1,.3,1), border-color .25s ease, filter .25s ease;
-  }
-  .proj-card:hover, .proj-card:focus-visible{
-    transform:translateY(-3px); border-color:var(--accent);
-    /* filter (not box-shadow) so the drop shadow isn't clipped by overflow:hidden above */
-    filter:drop-shadow(0 20px 32px rgba(0,0,0,.55));
-  }
-  .proj-thumb{
-    aspect-ratio:16/9; position:relative; overflow:hidden;
-    background:repeating-linear-gradient(135deg, transparent 0 8px, var(--line) 8px 9px);
-  }
-  .proj-img{
-    width:100%; height:100%; object-fit:cover; display:block;
-    transition:transform .5s cubic-bezier(.16,1,.3,1);
-  }
-  .proj-card:hover .proj-img{ transform:scale(1.04); }
-  .proj-body{ padding:22px 24px 24px; }
-  .proj-name{ font-family:"Fraunces",serif; font-weight:600; font-size:1.15rem; color:var(--text); margin-bottom:4px; }
-  .proj-tagline{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:.92rem; color:var(--accent); margin-bottom:12px; }
-  .proj-desc{ font-size:13.5px; line-height:1.6; color:var(--text-dim); margin:0 0 16px; }
-  .proj-roles{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
-  .proj-roles .tag{ font-size:10.5px; padding:4px 10px; }
-  .proj-link{
-    font-size:12.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
-    color:var(--text); display:inline-flex; align-items:center; gap:6px;
-  }
-  .proj-link .arrow{ transition:transform .2s ease; }
-  .proj-card:hover .proj-link .arrow{ transform:translateX(3px); }
-
-  .sync-status{
-    font-size:11.5px; letter-spacing:.04em; color:var(--text-dim);
-    display:flex; align-items:center; gap:7px; margin-left:auto; align-self:center;
-  }
-  .sync-dot{ width:7px; height:7px; border-radius:50%; background:var(--text-dim); flex:0 0 auto; }
-  .sync-dot.live{ background:#7fae6f; }
-  .sync-dot.partial{ background:var(--accent); }
-
-  /* ===== closing ===== */
-  .closing{
-    position:relative; padding:clamp(64px,11vw,96px) clamp(20px,6vw,64px);
-    border-top:1px solid var(--line); overflow:hidden;
-    background:radial-gradient(ellipse 70% 120% at 50% 40%, var(--bg-panel-2) 0%, var(--bg) 72%);
-  }
-  .closing-inner{ position:relative; text-align:center; max-width:640px; margin:0 auto; }
-  .closing h2{ font-size:clamp(2rem,4.6vw,3.2rem); margin:0 0 18px; color:var(--text); }
-  .closing p{ font-size:16px; line-height:1.6; color:var(--text-dim); margin:0; }
-
-  /* ===== footer ===== */
-  footer{
-    padding:24px clamp(20px,6vw,64px);
-    border-top:1px solid var(--line);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
-    font-size:12px; color:var(--text-dim);
-  }
-</style>
 </head>
 
 <body>
-<div class="page">
+    <header data-nav-status="not-active" class="nav">
+        <button type="button" data-nav-control="close" aria-hidden="true" tabindex="-1" class="nav__dark-overlay"></button>
+        <nav aria-label="Primary navigation" class="nav__main">
+            <div class="nav__bar">
+                <div class="nav__bar-inner">
+                    <div class="nav__start">
+                        <a aria-label="Homepage" href="#">ATOMIC LABS</a>
+                    </div>
+                    <!--
+        <div class="nav__end">
+          <div class="nav__end-inner">
+            <ul id="nav-list" data-nav-list="" class="nav__list">
+              <li data-nav-sub-status="not-active" class="nav__item">
+                <button type="button" data-nav-sub-control="toggle" aria-controls="nav-dropdown-services" aria-expanded="false" class="nav__link">
+                  <span class="nav__link-span">Services</span>
+                  <span class="nav__link-chevron">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.33398 6L8.00065 10.6667L12.6673 6" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
+                  </span>
+                </button>
+                <div class="nav__dropdown">
+                  <div class="nav__dropdown-inner">
+                    <ul id="nav-dropdown-services" class="nav__dropdown-list">
+                      <li class="nav__item">
+                        <a href="#" class="nav__link"><span class="nav__link-span">Branding & Identity</span></a>
+                      </li>
+                      <li class="nav__item">
+                        <a href="#" class="nav__link"><span class="nav__link-span">Marketing</span></a>
+                      </li>
+                      <li class="nav__item">
+                        <a href="#" class="nav__link"><span class="nav__link-span">UX Strategy</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link"><span class="nav__link-span">Company</span></a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link"><span class="nav__link-span">Blog</span></a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link"><span class="nav__link-span">Contact</span></a>
+              </li>
+            </ul>
+            <div class="nav__btn-wrap">
+              <a href="#" class="nav__btn"><span class="nav__btn-span">Get in touch</span></a>
+            </div>
+          </div>
+        </div>
+				-->
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="landing">
+            <h1 data-rotating-title class="rotating-text__heading">
+                creating
+                <span data-rotating-words="experiences, interfaces, scalability, solutions" class="rotating-text__highlight">
+                    routines
+                </span>
+            </h1>
+        </div>
+    </main>
 
-  <div class="topbar">
-    <div class="kicker">Timber Hjellum</div>
-    <div class="meta">UX &middot; Information Architecture &middot; UI Development</div>
-  </div>
+    <section class="parallax-demo-hero underground-films">
+        <div data-tabs-autoplay-duration="5000" data-tabs="wrapper" data-tabs-autoplay="true" class="tab-layout__wrap">
+            <div class="tab-layout__col">
+                <div class="tab-content__wrap">
+                    <div class="tab-content__inner">
+                        <div class="tab-content__top">
+                            <!-- -->
+                            <!-- div class="sample" -->
+                            <div class="card">
+                                <span class="eyebrow">Case study · 01</span>
+                                <h3>Underground Films</h3>
+                                <p class="more-less" data-id="less">
+                                    Underground Films was still a concept when I joined. I was
+                                    responsible for shaping that vision into a cohesive digital
+                                    experience spanning a responsive website, mobile apps, and
+                                    streaming integrations with Roku, Prime Video, and Netflix.
+                                    Through persona exercises and user stories, I defined
+                                    audience needs and translated those insights into sitemaps,
+                                    user flows, wireframes, and interactive prototypes. I also
+                                    studied competing platforms to identify familiar interaction
+                                    patterns, using established conventions to make the new
+                                    service intuitive to navigate.
+                                    <br />
+                                    <a href="#ui">More...</a>
+                                </p>
+                                <div class="btns">
+                                    <!-- button class="btn primary" type="button">More...</button -->
+                                    <button class="btn primary toggle" type="button">
+                                        More...
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /div -->
+                            <!-- -->
+                        </div>
+                        <div role="tablist" class="tab-content__bottom">
+                            <a role="tab" data-tabs="content-item" href="#" class="tab-content__item">
+                                <div class="tab-content__item-main">
+                                    <div class="tab-content--item-number">
+                                        <div>01</div>
+                                    </div>
+                                    <h2 class="content-item__heading tab-heading--h2">
+                                        An Invitation to Explore
+                                    </h2>
+                                </div>
+                                <div data-tabs="item-details" class="tab-content__item-detail">
+                                    <div class="tab-description__spacer"></div>
+                                    <p class="tab-description">
+                                        I designed the landing page to spark curiosity from the
+                                        first visit. Animated film posters introduce the catalog,
+                                        while a clear invitation to sign in or create a free
+                                        account gives visitors a natural next step.
+                                    </p>
+                                    <div class="tab-description__spacer"></div>
+                                </div>
+                                <div class="tab-content__item-bottom">
+                                    <div data-tabs="item-progress" class="tab-progress"></div>
+                                </div>
+                            </a>
+                            <a role="tab" data-tabs="content-item" href="#" class="tab-content__item">
+                                <div class="tab-content__item-main">
+                                    <div class="tab-content--item-number">
+                                        <div>02</div>
+                                    </div>
+                                    <h2 class="content-item__heading tab-heading--h2">
+                                        A Personal Starting Point
+                                    </h2>
+                                </div>
+                                <div data-tabs="item-details" class="tab-content__item-detail">
+                                    <div class="tab-description__spacer"></div>
+                                    <p class="tab-description">
+                                        The member homepage balances discovery with familiarity. A
+                                        visual slider highlights upcoming releases, featured
+                                        titles, and popular films, while recommendations based on
+                                        viewing habits make the experience more personal.
+                                    </p>
+                                    <div class="tab-description__spacer"></div>
+                                </div>
+                                <div class="tab-content__item-bottom">
+                                    <div data-tabs="item-progress" class="tab-progress"></div>
+                                </div>
+                            </a>
+                            <a role="tab" data-tabs="content-item" href="#" class="tab-content__item">
+                                <div class="tab-content__item-main">
+                                    <div class="tab-content--item-number">
+                                        <div>03</div>
+                                    </div>
+                                    <h2 class="content-item__heading tab-heading--h2">
+                                        Built for Discovery
+                                    </h2>
+                                </div>
+                                <div data-tabs="item-details" class="tab-content__item-detail">
+                                    <div class="tab-description__spacer"></div>
+                                    <p class="tab-description">
+                                        For a film-savvy audience, finding the right title matters
+                                        as much as discovering something unexpected. I focused on
+                                        making a diverse catalog of independent and international
+                                        films easy to explore across genres, languages, and
+                                        countries.
+                                    </p>
+                                    <div class="tab-description__spacer"></div>
+                                </div>
+                                <div class="tab-content__item-bottom">
+                                    <div data-tabs="item-progress" class="tab-progress"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-layout__col">
+                <div aria-live="polite" role="region" class="tab-visual__wrap">
+                    <div id="tab1" data-tabs="visual-item" role="tabpanel" class="tab-visual__item active">
+                        <div class="tab-visual__inner">
+                            <img src="https://01a107d0-f84f-701e-a9f8-a540705ea18c.codepenusercontent.com/images/underground-films--landing.webp" loading="lazy" alt="" class="tab-image" />
+                        </div>
+                    </div>
+                    <div id="tab2" data-tabs="visual-item" role="tabpanel" class="tab-visual__item">
+                        <div class="tab-visual__inner">
+                            <img src="https://01a107d0-f84f-701e-a9f8-a540705ea18c.codepenusercontent.com/images/underground-films--landing.webp" loading="lazy" alt="" class="tab-image" />
+                        </div>
+                    </div>
+                    <div id="tab3" data-tabs="visual-item" role="tabpanel" class="tab-visual__item">
+                        <div class="tab-visual__inner">
+                            <img src="https://01a107d0-f84f-701e-a9f8-a540705ea18c.codepenusercontent.com/images/underground-films--slider.webp" loading="lazy" alt="" class="tab-image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="space"></section>
+    <section class="horizontal__wrap" data-horizontal-scroll-wrap data-horizontal-scroll-disable="mobileLandscape">
+        <div data-horizontal-scroll-panel class="horizontal__panel fastsigns">
+            <div class="hero">
+                <div class="hero-inner">
+                    <div class="hero-copy">
+                        <div class="kicker">FastSigns &middot; Website Redesign</div>
+                        <h1 class="display">
+                            <span>Over 700 Locations</span>
+                            <span><em>One website</em></span>
+                        </h1>
+                        <p>
+                            FastSigns' site had grown to cover everything from vehicle wraps
+                            to ADA compliance signage, sold through 700+ independently owned
+                            locations — with no shared structure tying it together. I led
+                            the IA and UX for a full taxonomy rebuild: one classification
+                            system built around what customers were actually trying to
+                            solve.<!-- br /><br />
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 8V3H18V21H6V16" stroke="black" stroke-miterlimit="10"></path>
+<path d="M10 15.5L13.5 12L10 8.5" stroke="black" stroke-miterlimit="10"></path>
+<path d="M13.5 12H2.5" stroke="black" stroke-miterlimit="10"></path>
+              </svg -->
+                        </p>
+                    </div>
+                    <div class="globe-stage" aria-hidden="true">
+                        <div data-globe-gallery-init class="globe-gallery">
+                            <div class="globe-gallery__collection">
+                                <div data-globe-gallery-list class="globe-gallery__list">
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/001.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/002.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/003.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/004.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/005.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/006.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/007.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/008.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/009.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/010.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/011.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/012.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/013.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/014.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                    <div data-globe-gallery-item class="globe-gallery__item">
+                                        <img src="/images/015.webp" alt="" draggable="false" class="globe-gallery__image" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mastercard -->
+        <div data-horizontal-scroll-panel class="horizontal__panel mastercard">
+            <div class="horizontal__panel-inner">
+                <div class="hero">
+                    <div class="hero--inner">
+                        <div class="hero-copy"> <!--div class="kicker"> Online Travel &amp; Booking &middot; Three Site Iterations </div-->
+                            <h1> <span>Changing</span> <span>the Direction</span> <span> of <em>Convention.</em> </span> </h1>
+                            <p> One continuous thread of work, three different brands. I led the information architecture and UX through three successive site iterations � Trip.com, CheapTickets, and Orbitz � carrying user research, competitive analysis, and a growing brand portfolio through every relaunch. </p>
+                        </div>
+                        <div class="card-stage" aria-hidden="true">
+                            <div class="perspective">
+                                <div class="credit-card">
+                                    <div class="chip">
+                                        <div class="line"></div>
+                                        <div class="line"></div>
+                                        <div class="line"></div>
+                                        <div class="line"></div>
+                                        <div class="main"></div>
+                                    </div>
+                                    <div class="touch"></div>
+                                    <div class="logo">
+                                        <div class="top">
+                                            <div class="circles"></div>
+                                        </div>
+                                        <div class="bottom"></div>
+                                    </div>
+                                    <div class="number">5200 0000 0000 1096</div>
+                                    <div class="date">03/33</div>
+                                    <div class="name">TIMBER WOLVES</div>
+                                    <div class="bank"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- travel -->
+        <div data-horizontal-scroll-panel class="horizontal__panel travel">
+            <div class="horizontal__panel-inner">
+                <div class="hero">
+                    <div class="hero--inner">
+                        <div class="hero-copy"> <!--div class="kicker"> Online Travel &amp; Booking &middot; Three Site Iterations </div-->
+                            <h1> Trip.com <br /> CheapTickets.com <br /> <em>Orbitz.com</em> </h1>
+                            <p> One continuous thread of work, three different brands. I led the information architecture and UX through three successive site iterations � Trip.com, CheapTickets, and Orbitz � carrying user research, competitive analysis, and a growing brand portfolio through every relaunch. </p>
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="marquee-container">
+                    <div class="marquee">
+                        <ul class="marquee__content">
+                            <li><img src="/images/marquee-001.webp" alt="" /></li>
+                            <li><img src="/images/marquee-002.webp" alt="" /></li>
+                            <li><img src="/images/marquee-003.webp" alt="" /></li>
+                            <li><img src="/images/marquee-004.webp" alt="" /></li>
+                            <li><img src="/images/marquee-005.webp" alt="" /></li>
+                            <li><img src="/images/marquee-006.webp" alt="" /></li>
+                            <li><img src="/images/marquee-007.webp" alt="" /></li>
+                            <li><img src="/images/marquee-008.webp" alt="" /></li>
+                            <li><img src="/images/marquee-009.webp" alt="" /></li>
+                            <li><img src="/images/marquee-010.webp" alt="" /></li>
+                            <li><img src="/images/marquee-011.webp" alt="" /></li>
+                            <li><img src="/images/marquee-012.webp" alt="" /></li>
+                        </ul>
+                        <ul class="marquee__content" aria-hidden="true">
+                            <li><img src="/images/marquee-001.webp" alt="" /></li>
+                            <li><img src="/images/marquee-002.webp" alt="" /></li>
+                            <li><img src="/images/marquee-003.webp" alt="" /></li>
+                            <li><img src="/images/marquee-004.webp" alt="" /></li>
+                            <li><img src="/images/marquee-005.webp" alt="" /></li>
+                            <li><img src="/images/marquee-006.webp" alt="" /></li>
+                            <li><img src="/images/marquee-007.webp" alt="" /></li>
+                            <li><img src="/images/marquee-008.webp" alt="" /></li>
+                            <li><img src="/images/marquee-009.webp" alt="" /></li>
+                            <li><img src="/images/marquee-010.webp" alt="" /></li>
+                            <li><img src="/images/marquee-011.webp" alt="" /></li>
+                            <li><img src="/images/marquee-012.webp" alt="" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <div class="hero">
-    <div class="hero-inner">
-      <span class="kicker">Portfolio</span>
-      <h1 class="display">Fifteen sites.<br>One way of <em>seeing structure</em>.</h1>
-      <p>A working collection of information architecture and UX case studies — spanning government, industrial, financial, healthcare, food &amp; beverage, travel, entertainment, education, and retail. Every project below is a live, published site.</p>
-    </div>
-  </div>
-  <div class="rule"></div>
+        <!--div data-horizontal-scroll-panel class="horizontal__panel disney">
+    </div-->
+    </section>
+    <section class="section-resource">
+        <div class="demo-header__center">
+            <h1 class="demo-header__h1"></h1>
+        </div>
+        <div class="demo-header__bottom">
+            <p class="demo-header__p">Scroll down ↓</p>
+        </div>
+    </section>
 
-  <div class="stats">
-    <div class="stat"><div class="num">15</div><div class="lbl">Case Studies</div></div>
-    <div class="stat"><div class="num" id="statIndustries">9</div><div class="lbl">Industries</div></div>
-    <div class="stat"><div class="num">20+</div><div class="lbl">Sites &amp; Platforms Redesigned</div></div>
-    <div class="sync-status" id="syncStatus"><span class="sync-dot" id="syncDot"></span><span id="syncLabel">Loading live project data&hellip;</span></div>
-  </div>
-
-  <div class="directory" id="directory"></div>
-
-  <div class="closing">
-    <div class="closing-inner">
-      <h2 class="display">One taxonomy at a time.</h2>
-      <p>Fifteen industries, one consistent approach — content inventory, taxonomy, and structure built around how people actually search, not how the org chart is drawn.</p>
-    </div>
-  </div>
-
-  <footer>
-    <div>Timber Hjellum &middot; UX / IA / UI Portfolio</div>
-    <div>15 Case Studies</div>
-  </footer>
-</div>
-
-<script>
-  // Fallback snapshot — used immediately on load, and for any project whose
-  // live skills.json can't be reached (CORS not yet enabled, network error,
-  // or the "project" block hasn't been added yet).
-  var PROJECTS = [
-    { slug:"energy-information-administration", category:"Government & Public Sector",
-      name:"Energy Information Administration", tagline:"A million pages. One modern standard.",
-      summary:"Modernized a million-page federal energy site to responsive, accessible HTML5 — without disrupting the public data it serves.",
-      roles:["Front-End Developer","UI Developer","Accessibility"] },
-
-    { slug:"honeywell-case-study", category:"Engineering & Industrial",
-      name:"Honeywell Aerospace", tagline:"Many systems. One interface. Built to scale.",
-      summary:"Converted Honeywell's patchwork ordering systems into one scalable, tablet-ready interface built to be reused in everything after.",
-      roles:["UX Designer","Interactive Designer","UI Developer"] },
-
-    { slug:"mastercard-case-study", category:"Financial Services",
-      name:"Mastercard", tagline:"Many platforms. One application. One network.",
-      summary:"Pre-deployment content inventory, taxonomy, sitemap, and wireframes unifying Mastercard's platforms behind a single application.",
-      roles:["UX Designer","UI Developer"] },
-
-    { slug:"novartis-case-study", category:"Healthcare & Pharmaceutical",
-      name:"Novartis Pharmaceuticals", tagline:"Many sites. One standard. Designed with precision.",
-      summary:"Reconciled dozens of self-built team intranets into one governed system, with brand-standard templates and clear access rules.",
-      roles:["UX Designer","Interactive Designer","UI Developer"] },
-
-    { slug:"boston-market", category:"Food & Beverage",
-      name:"Boston Market", tagline:"A menu, rebuilt to be found.",
-      summary:"A full single-page rebuild of Boston Market's menu, catering, and rewards content around one product taxonomy.",
-      roles:["Information Architecture","UX Design"] },
-
-    { slug:"old-chicago", category:"Food & Beverage",
-      name:"Old Chicago Pizza & Taproom", tagline:"One platform. Every pour, organized.",
-      summary:"A shared taxonomy for beer, food, rewards, and locations across both Old Chicago and Rock Bottom's restaurant platforms.",
-      roles:["Lead IA","UX Designer"] },
-
-    { slug:"rock-bottom-brewery", category:"Food & Beverage",
-      name:"Rock Bottom Restaurant & Brewery", tagline:"One taxonomy. Every taproom, organized.",
-      summary:"A shared product taxonomy for beer, food, events, and rewards across Rock Bottom's eleven taprooms.",
-      roles:["Lead IA","UX Designer"] },
-
-    { slug:"red-robin-case-study", category:"Food & Beverage",
-      name:"Red Robin Gourmet Hamburgers", tagline:"New design. One section. Full flavor.",
-      summary:"A focused redesign of one section of Red Robin's site, owned end-to-end from the first sitemap to the final build.",
-      roles:["Lead UX Designer","UI Developer"] },
-
-    { slug:"molson-coors", category:"Food & Beverage",
-      name:"Molson Coors", tagline:"Two brands. Two neighbors. One purpose.",
-      summary:"A post-merger SharePoint migration rebuilding IA and navigation in English and French, so every team felt like one company.",
-      roles:["UX Designer","UI Developer"] },
-
-    { slug:"travel-websites-case-study", category:"Travel & Hospitality",
-      name:"Trip.com · CheapTickets · Orbitz", tagline:"Three sites. One continuous thread.",
-      summary:"Usability testing, competitive analysis, and information architecture carried across three travel brands.",
-      roles:["Lead IA","UX Designer"] },
-
-    { slug:"disney-case-study", category:"Travel & Hospitality",
-      name:"Disney Weddings, Honeymoons & Meetings", tagline:"Every love story. One magical site.",
-      summary:"Rebuilt Disney's Weddings, Honeymoons, and Meetings sites around one taxonomy — organized the way couples actually plan, not how the business was structured.",
-      roles:["Lead IA","UX Designer"] },
-
-    { slug:"diginext-case-study", category:"Entertainment & Sports",
-      name:"DigiNext", tagline:"One taxonomy. Every screen.",
-      summary:"A single responsive taxonomy spanning DigiNext's app, Roku, Prime Video, and Netflix channel — one structure across four navigation conventions.",
-      roles:["Lead IA","UX Designer"] },
-
-    { slug:"orlando-magic", category:"Entertainment & Sports",
-      name:"Orlando Magic", tagline:"Scouting Application",
-      summary:"A SharePoint scouting application that replaced scattered spreadsheets with one tool for tracking prospects, reports, and draft-day player lists.",
-      roles:["IA","UX Designer","UI Developer"] },
-
-    { slug:"education-development-center", category:"Education & Nonprofit",
-      name:"Education Development Center", tagline:"Many platforms. One place to learn.",
-      summary:"A content inventory, classification system, and migration strategy unifying EDC's programs into one platform.",
-      roles:["UX Designer","UI Developer"] },
-
-    { slug:"fastsigns", category:"Retail & Franchise",
-      name:"FastSigns", tagline:"Eight services. One taxonomy. Zero guesswork.",
-      summary:"One taxonomy built around customer needs, unifying eight service lines across 650+ franchise locations.",
-      roles:["Lead IA","UX Designer"] }
-  ];
-
-  // Preferred display order for categories; anything new sorts alphabetically after these.
-  var CATEGORY_ORDER = [
-    "Government & Public Sector","Engineering & Industrial","Financial Services",
-    "Healthcare & Pharmaceutical","Food & Beverage","Travel & Hospitality",
-    "Entertainment & Sports","Education & Nonprofit","Retail & Franchise"
-  ];
-
-  function escapeHtml(str){
-    return String(str == null ? "" : str).replace(/[&<>"']/g, function(c){
-      return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c];
-    });
-  }
-
-  function render(projects){
-    var byCategory = {};
-    projects.forEach(function(p){
-      var cat = p.category || "Other";
-      (byCategory[cat] = byCategory[cat] || []).push(p);
-    });
-
-    var orderedCats = CATEGORY_ORDER.filter(function(c){ return byCategory[c]; });
-    Object.keys(byCategory).sort().forEach(function(c){
-      if (orderedCats.indexOf(c) === -1) orderedCats.push(c);
-    });
-
-    var html = orderedCats.map(function(cat){
-      var items = byCategory[cat];
-      var cards = items.map(function(p){
-        var roles = (p.roles || []).map(function(r){ return '<span class="tag">' + escapeHtml(r) + '</span>'; }).join("");
-        var siteUrl = 'https://' + p.slug + '.netlify.app/';
-        return '' +
-          '<a class="proj-card" href="' + siteUrl + '" target="_blank" rel="noopener">' +
-            '<div class="proj-thumb">' +
-              '<img class="proj-img" src="' + siteUrl + 'images/og-image.jpg" alt="' + escapeHtml(p.name) + ' preview" loading="lazy" ' +
-                'onerror="this.remove();">' +
-            '</div>' +
-            '<div class="proj-body">' +
-              '<div class="proj-name">' + escapeHtml(p.name) + '</div>' +
-              '<div class="proj-tagline">' + escapeHtml(p.tagline) + '</div>' +
-              '<p class="proj-desc">' + escapeHtml(p.summary) + '</p>' +
-              '<div class="proj-roles">' + roles + '</div>' +
-              '<span class="proj-link">View case study <span class="arrow">&rarr;</span></span>' +
-            '</div>' +
-          '</a>';
-      }).join("");
-      return '' +
-        '<div class="cat">' +
-          '<div class="cat-head"><h2 class="display">' + escapeHtml(cat) + '</h2>' +
-          '<span class="cat-count">' + items.length + (items.length === 1 ? ' project' : ' projects') + '</span></div>' +
-          '<div class="proj-grid">' + cards + '</div>' +
-        '</div>';
-    }).join("");
-
-    document.getElementById("directory").innerHTML = html;
-    document.getElementById("statIndustries").textContent = orderedCats.length;
-  }
-
-  // Render immediately from the fallback snapshot so the page is never empty.
-  render(PROJECTS);
-
-  // Then try to refresh each card from that project's own skills.json.
-  // A "project" block there — { name, category, tagline, summary } — overrides
-  // the snapshot; the roles array overrides the role tags. Anything missing,
-  // or any project whose site hasn't enabled CORS on skills.json yet, just
-  // keeps showing today's snapshot.
-  Promise.all(PROJECTS.map(function(p){
-    return fetch('https://' + p.slug + '.netlify.app/skills.json', { cache: 'no-store' })
-      .then(function(res){ return res.ok ? res.json() : null; })
-      .then(function(data){
-        if (!data) return { project: p, live: false };
-        var proj = data.project || {};
-        var merged = {
-          slug: p.slug,
-          category: proj.category || p.category,
-          name: proj.name || p.name,
-          tagline: proj.tagline || p.tagline,
-          summary: proj.summary || p.summary,
-          roles: (Array.isArray(data.roles) && data.roles.length)
-            ? data.roles.map(function(r){ return r.roleName; }).filter(Boolean)
-            : p.roles
-        };
-        return { project: merged, live: !!proj.name };
-      })
-      .catch(function(){ return { project: p, live: false }; });
-  })).then(function(results){
-    var resolved = results.map(function(r){ return r.project; });
-    var liveCount = results.filter(function(r){ return r.live; }).length;
-    render(resolved);
-
-    var dot = document.getElementById("syncDot");
-    var label = document.getElementById("syncLabel");
-    if (liveCount === 0){
-      dot.className = "sync-dot";
-      label.textContent = "Showing saved snapshot — no live skills.json project data yet";
-    } else if (liveCount === results.length){
-      dot.className = "sync-dot live";
-      label.textContent = "All " + liveCount + " projects synced live from skills.json";
-    } else {
-      dot.className = "sync-dot partial";
-      label.textContent = liveCount + " / " + results.length + " projects synced live — rest showing saved snapshot";
-    }
-  });
-</script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PNFFVC9SB"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-0PNFFVC9SB');
-    </script>
 </body>
 
 </html>

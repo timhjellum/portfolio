@@ -1,7 +1,7 @@
-# Timber Portfolio #
-[![Netlify Status](https://api.netlify.com/api/v1/badges/92226321-012b-4815-a415-72381615950e/deploy-status)](https://timber-portfolio.netlify.app//deploys)
+# Boston Market #
+[![Netlify Status](https://api.netlify.com/api/v1/badges/92226321-012b-4815-a415-72381615950e/deploy-status)](https://boston-market.netlify.app//deploys)
 <br><br><br>
-![Timber Portfolio](images/og-image.jpg)
+![Boston Market](images/og-image.jpg)
 <br><br><br>
 <figure>
 <img src="images/apple-touch-icon.png" alt="" />
@@ -18,7 +18,7 @@
 </figure>
 <br><br><br>
 <figure>
-<img src="images/--icon-mask.png" alt="" width="512" height="512" />
+<img src="images/icon-mask.png" alt="" width="512" height="512" />
   <figcaption>icon-mask.png (512x512) - mask is simulated</figcaption>
 </figure>
 <br>
