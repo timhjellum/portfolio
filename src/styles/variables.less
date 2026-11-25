@@ -17,6 +17,21 @@
   //--gradient-2: oklch(0.3476 0.0882 283.04); //#2e1065;
   //--gradient-1: oklch(0.3991 0.2179 283.04); // #4a1d96;
 
+  /* ink: one shared background scale (palette hue 285, low chroma) */
+  --ink-0: #06060a; /* deepest: overlays, fades */
+  --ink-1: #0a0a10; /* page background */
+  --ink-2: #121219; /* panels, cards */
+  --ink-3: #181821; /* raised surfaces */
+  --ink-4: #22222c; /* hairlines */
+  --ink-0--rgb: 6, 6, 10;
+  --ink-1--rgb: 10, 10, 16;
+  --ink-2--rgb: 18, 18, 25;
+  --ink-3--rgb: 24, 24, 33;
+  --ink-4--rgb: 34, 34, 44;
+
+  --bg-color: var(--ink-1);
+  
+  
   --size-unit: 16; /* body font-size in design - no px */
   //--size-container-ideal: 1440; /* screen-size in design - no px */
   --size-container-min: 320px;
@@ -37,12 +52,12 @@
   --dark-2: #0c0c0c;
   --dark-3: #121212;
   /* darks: navy */
-  --navy-1: #07071b;
-  --navy-2: #0b0b24;
-  --navy-3: #101028;
-  --navy-3--rgb: 16, 16, 40;
-  --navy-4: #1b1b30;
-  --navy-4--rgb: 27, 27, 48;
+  --navy-1: var(--ink-0); /* navy now maps to ink */
+  --navy-2: var(--ink-1);
+  --navy-3: var(--ink-2);
+  --navy-3--rgb: var(--ink-2--rgb);
+  --navy-4: var(--ink-3);
+  --navy-4--rgb: var(--ink-3--rgb);
   /* lights */
   --white: #ffffff;
   --off-white: #eeeeee;

@@ -3,9 +3,9 @@
    with the logo marquee pinned to the bottom instead of a card.
    ========================================================================== */
 
-/* Kept as-is: the Mastercard panel currently picks up this --bg too */
+/* Shared page background (see variables.less ink scale) */
 :root {
-  --bg: #0c0e13;
+  --bg: var(--bg-color);
 }
 
 .travel {
@@ -40,7 +40,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: rgba(11, 11, 14, 0.68);
+  background: rgba(var(--ink-1--rgb), 0.68);
 }
 .travel .hero:after {
   content: "";
@@ -48,7 +48,7 @@
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(130deg, #0b0b0e 0%, rgba(11, 11, 14, 0.5) 58%, rgba(11, 11, 14, 0.55) 62%, rgba(11, 11, 14, 0.15) 100%);
+  background: linear-gradient(130deg, var(--bg-color) 0%, rgba(var(--ink-1--rgb), 0.5) 58%, rgba(var(--ink-1--rgb), 0.55) 62%, rgba(var(--ink-1--rgb), 0.15) 100%);
 }
 .travel .hero--inner {
   width: 100%;
@@ -141,7 +141,7 @@
 /* ===== Travel marquee ===== */
 .marquee-container {
   position: relative;
-  background: #0b0b0e;
+  background: var(--bg-color);
 }
 /* left and right fades to black */
 .marquee-container::before,
@@ -156,11 +156,11 @@
 }
 .marquee-container::before {
   left: 0;
-  background: linear-gradient(90deg, #0b0b0e 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(90deg, var(--bg-color) 0%, rgba(var(--ink-1--rgb), 0) 100%);
 }
 .marquee-container::after {
   right: 0;
-  background: linear-gradient(270deg, #0b0b0e 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(270deg, var(--bg-color) 0%, rgba(var(--ink-1--rgb), 0) 100%);
 }
 .marquee {
   --gap: 1rem;

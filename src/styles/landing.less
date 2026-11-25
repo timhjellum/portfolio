@@ -6,7 +6,7 @@
     --blue: #087bff;
     --blue-rgb: 96, 49, 154;
     --muted: #8894a5;
-    --bg: #050609;
+    //--bg: #050609;
     background-image:
       linear-gradient(
         rgba(var(--blue-rgb), 0.25) var(--line-width),
@@ -19,7 +19,7 @@
         transparent var(--line-width),
         transparent var(--line-width)
       );
-    background-color: #000;
+    background-color: var(--bg-color);
     background-size: var(--grid-size) var(--grid-size);
     width: 100%;
     height: 100%;
@@ -35,7 +35,7 @@
       background: radial-gradient(
         circle,
         rgba(255, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 1) 100%
+        rgba(var(--ink-1--rgb), 1) 100%
       );
     }
   }

@@ -1,13 +1,13 @@
 @layer fastsigns {
   :root {
-    --bg: #0c0e13;
-    --bg-panel: #15181f;
-    --bg-panel-2: #1d222c;
+    --bg: var(--bg-color);
+    --bg-panel: var(--ink-2);
+    --bg-panel-2: var(--ink-3);
     --text: #f2f4f7;
     --text-dim: #9aa3b0;
     --accent: #4a72ff;
     --pop: #ff3b4e;
-    --line: #262c38;
+    --line: var(--ink-4);
   }
 
   .fastsigns {
@@ -42,7 +42,7 @@ position: relative;
         inset: 0;
         z-index: 2;
         pointer-events: none;
-        background: linear-gradient(130deg, var(--bg) 0%, rgba(12, 14, 19, 0.55) 52%, rgba(12, 14, 19, 0.35) 62%, rgba(12, 14, 19, 0) 100% ), linear-gradient(180deg, rgba(12, 14, 19, 0) 80%, var(--bg) 100%);
+        background: linear-gradient(130deg, var(--bg) 0%, rgba(var(--ink-1--rgb), 0.55) 52%, rgba(var(--ink-1--rgb), 0.35) 62%, rgba(var(--ink-1--rgb), 0) 100% ), linear-gradient(180deg, rgba(var(--ink-1--rgb), 0) 80%, var(--bg) 100%);
       }
     }
 

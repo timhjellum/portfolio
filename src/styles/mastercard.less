@@ -1,9 +1,9 @@
 @layer mastercard {
 	:root {
 		--text-shadow: 0.1cqw 0.1cqw 0.1cqw #000000;
-		--bg: #0b0b0e;
-		--bg-panel: #131318;
-		--bg-panel-2: #1a1a22;
+		--bg: var(--bg-color);
+		--bg-panel: var(--ink-2);
+		--bg-panel-2: var(--ink-3);
 		--text: #f4f3f6;
 		--text-dim: #a2a2ad;
 		--accent: #ff5f00;
@@ -11,7 +11,7 @@
 
 		// credit card
 		--mc-yellow: #f79e1b;
-		--line: #232329;
+		--line: var(--ink-4);
 		--mastercard-red: #eb001b;
 		--mastercard-orange: #fa5e03;
 		--mastercard-circle-size: 7cqw;
@@ -50,7 +50,7 @@
 				position: absolute;
 				inset: 0;
 				z-index: 0;
-				background: rgba(11, 11, 14, 0.68);
+				background: rgba(var(--ink-1--rgb), 0.68);
 			}
 
 			&:after {
@@ -60,10 +60,10 @@
 				z-index: 2;
 				pointer-events: none;
 				background: linear-gradient(130deg,
-						#0b0b0e 0%,
-						rgba(11, 11, 14, 0.5) 58%,
-						rgba(11, 11, 14, 0.55) 62%,
-						rgba(11, 11, 14, 0.15) 100%);
+						var(--bg-color) 0%,
+						rgba(var(--ink-1--rgb), 0.5) 58%,
+						rgba(var(--ink-1--rgb), 0.55) 62%,
+						rgba(var(--ink-1--rgb), 0.15) 100%);
 			}
 		}
 
