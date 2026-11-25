@@ -2,12 +2,13 @@
    Self-hosted fonts — replaces styles/fonts.*.css (all Google Fonts imports)
    Files live in /fonts/. Latin subset, WOFF2 only. All fonts SIL OFL 1.1.
 
-   5 families, 6 files (~188 KB total):
+   6 families, 7 files (~201 KB total):
      Inter (variable 100–900) .... body, kickers, case-study text
      Merriweather 500 + italic ... landing rotating-text heading
      Poppins 600 ................. display / tab headings
      IBM Plex Mono 500 ........... eyebrows, numbers, credit card
      Sora 800 .................... Mastercard hero h1
+     Oswald 600 .................. Orlando Magic badge / headings
    ========================================================================== */
 
 @font-face {
@@ -55,6 +56,14 @@
   font-family: "Sora";
   src: url("../fonts/sora-800.woff2") format("woff2");
   font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../fonts/oswald-600.woff2") format("woff2");
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }

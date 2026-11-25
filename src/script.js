@@ -7,6 +7,7 @@ import './fonts/merriweather-500-italic.woff2';
 import './fonts/poppins-600.woff2';
 import './fonts/ibm-plex-mono-500.woff2';
 import './fonts/sora-800.woff2';
+import './fonts/oswald-600.woff2';
 // scripts
 import './scripts/gsap-rotating-text.js';
 import './scripts/gsap-horizontal-scroll.js';

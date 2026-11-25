@@ -81,6 +81,32 @@ function initHorizontalScrolling() {
 
           ScrollTrigger.addEventListener("scrollEnd", onScrollEnd);
           snapHandlers.push(onScrollEnd);
+
+          // Exit parallax: once the last panel finishes and the page scrolls
+          // vertically again, elements marked [data-exit-parallax="0.5"] leave
+          // the screen at that fraction of the floor's speed (floor = 1).
+          const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          const lastPanel = panels[panels.length - 1];
+          if (!reduceMotion) {
+            gsap.utils.toArray("[data-exit-parallax]", lastPanel).forEach((el) => {
+              const speed = parseFloat(el.getAttribute("data-exit-parallax"));
+              const lag = 1 - (Number.isFinite(speed) ? speed : 0.5);
+              gsap.fromTo(
+                el,
+                { y: 0 },
+                {
+                  y: () => window.innerHeight * lag,
+                  ease: "none",
+                  scrollTrigger: {
+                    start: () => st.end,                      // horizontal ride is over
+                    end: () => st.end + window.innerHeight,   // panel fully scrolled away
+                    scrub: true,
+                    invalidateOnRefresh: true,
+                  },
+                }
+              );
+            });
+          }
         });
       });
 

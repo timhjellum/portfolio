@@ -1,0 +1,429 @@
+/* theme vars scoped to this section so they don't override other panels' --accent/--line */
+.orlando-magic {
+	--bg-solid: #05070a;
+	--grad-start: #0c3868;
+	--grad-mid: #050e1c;
+	--grad-end: #000000;
+	--surface: #141c26;
+	--surface-2: #1c2733;
+	--ink: #eef1f4;
+	--ink-soft: #a9b7c2;
+	--ink-faint: #7c8b97;
+	--accent: #3fa3e8;
+	--accent-ink: #041426;
+	--navy: #041e42;
+	--court: #e0a561;
+	--silver: #4c5761;
+	--line: rgba(238, 241, 244, 0.14);
+	--shadow: 0 18px 44px -20px rgba(0, 0, 0, 0.65);
+	--nav-bg: rgba(5, 7, 10, 0.86);
+	--scrim-strong: rgba(0, 0, 0, 0.92);
+	--stripe-3: rgba(238, 241, 244, 0.14);
+	--stripe-3-alt: rgba(5, 7, 10, 0.25);
+
+}
+
+.orlando-magic {
+	margin: 0;
+	height: 100%;
+	/* Court: hardwood tiles the full panel (100vh, edge to edge);
+	   the navy wash sits on top, and the edge gradient fades everything
+	   outside the 1280px content column back to the page ink. */
+	--court-tile: 340px;
+	--focus-w: 1280px;
+	--focus-feather: 200px;
+	background-color: var(--bg-color);
+	background-image:
+		linear-gradient(90deg,
+			rgba(var(--ink-1--rgb), 0.97) 0%,
+			rgba(var(--ink-1--rgb), 0.72) calc(50% - var(--focus-w) / 2),
+			rgba(var(--ink-1--rgb), 0) calc(50% - var(--focus-w) / 2 + var(--focus-feather)),
+			rgba(var(--ink-1--rgb), 0) calc(50% + var(--focus-w) / 2 - var(--focus-feather)),
+			rgba(var(--ink-1--rgb), 0.72) calc(50% + var(--focus-w) / 2),
+			rgba(var(--ink-1--rgb), 0.97) 100%),
+		linear-gradient(180deg,
+			rgba(2, 10, 22, 0.88) 0%,
+			rgba(3, 14, 30, 0.78) 45%,
+			rgba(4, 30, 66, 0.92) 100%),
+		url("../images/orlando-court.jpg");
+	background-repeat: no-repeat, no-repeat, repeat;
+	background-size: 100% 100%, 100% 100%, var(--court-tile) auto;
+	background-position: center, center, center top;
+	color: var(--ink);
+	font-family:
+		"Source Sans 3",
+		system-ui,
+		-apple-system,
+		"Segoe UI",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	line-height: 1.6;
+	color: var(--text);
+	font-family: "Inter", system-ui, sans-serif;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	container-type: size;
+
+	@media (min-width: 768px) {
+		&.horizontal__panel > .horizontal__panel-inner {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+
+		.hero {
+			flex: 1 1 auto;
+			min-height: 0;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+
+	.hero {
+		width: 100%;
+		max-width: 1280px;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		isolation: isolate;
+	}
+
+
+.locked {
+	width: 100%;
+	aspect-ratio: ~"300 / 200";
+	//background: var(--surface);
+	border: 1px solid var(--line);
+	border-radius: 4px;
+	padding: 1.5rem;
+	box-shadow: var(--shadow) 0 18px 44px -20px rgba(0, 0, 0, 0.65);
+	align-self: start;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background: var(--stripe-3);
+	background-image: repeating-linear-gradient(-45deg,
+			var(--stripe-3-alt),
+			var(--stripe-3-alt) 1rem,
+			transparent 0,
+			transparent 2rem);
+	background-size: 200% 200%;
+
+	svg {
+		width: 60px;
+		height: 60px;
+
+		.shackle-color {
+			stroke: #4c5761;
+		}
+
+		.lock-body {
+			stroke: #4c5761;
+			fill: #4c5761;
+		}
+
+		.keyhole {
+			stroke: var(--navy);
+		}
+
+		//    background: #EEEEEE;
+		//background: ;
+	}
+}
+
+body {
+	background: var(--bg-color);
+}
+
+
+
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+a {
+	color: inherit;
+}
+
+.eyebrow {
+	font-family: "IBM Plex Mono", ui-monospace, monospace;
+	font-size: 0.72rem;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--court);
+	font-weight: 500;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Oswald", "Arial Narrow", sans-serif;
+	text-transform: uppercase;
+	text-wrap: balance;
+	margin: 0;
+	color: var(--ink);
+}
+
+/* ---------- Nav ---------- */
+
+.site-nav {
+	position: sticky;
+	top: 0;
+	z-index: 40;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.85rem 1.5rem;
+	background: var(--nav-bg);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-bottom: 1px solid var(--line);
+}
+
+.nav-brand {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	text-decoration: none;
+	font-family: "Oswald", sans-serif;
+	text-transform: uppercase;
+	font-size: 0.88rem;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	color: var(--ink);
+}
+
+.nav-brand img {
+	width: 26px;
+	height: 26px;
+}
+
+.nav-links {
+	display: flex;
+	gap: 0.35rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	flex-wrap: wrap;
+}
+
+.nav-links a {
+	display: inline-block;
+	font-family: "IBM Plex Mono", ui-monospace, monospace;
+	font-size: 0.74rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--ink-faint);
+	padding: 0.5rem 0.7rem;
+	border-radius: 3px;
+	border-bottom: 2px solid transparent;
+	transition:
+		color 0.15s ease,
+		border-color 0.15s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+	color: var(--ink);
+}
+
+.nav-links a.is-active {
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+	position: relative;
+	background: transparent;
+	padding: 5rem 1.5rem 4.5rem;
+	text-align: center;
+	color: #f2f6fa;
+	overflow: hidden;
+	scroll-margin-top: 3.5rem;
+}
+
+.hero::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(ellipse 60% 45% at 50% 32%,
+			rgba(0, 114, 206, 0.35),
+			transparent 70%);
+	pointer-events: none;
+}
+
+.hero-inner {
+	position: relative;
+	z-index: 1;
+	max-width: 46rem;
+	margin: 0 auto;
+}
+
+.hero-logo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	filter: drop-shadow(0 12px 30px rgba(0, 114, 206, 0.45));
+}
+
+/* ---------- Arched badge: title wraps the logo ---------- */
+/* One SVG (viewBox 400x400) so text, dots and logo scale together.
+   Width is capped by viewport width AND height so it always fits the panel. */
+.hero-badge {
+	display: block;
+	width: min(88vw, 520px, 70dvh);
+	height: auto;
+	overflow: visible;
+}
+
+.hero-badge__text {
+	font-family: "Oswald", "Arial Narrow", sans-serif;
+	font-weight: 600;
+	font-size: 38px; /* in viewBox units, scales with the SVG */
+	fill: #f2f6fa;
+}
+
+.hero-badge__text--bottom {
+	fill: #f2f6fa; /* white like the top line */
+}
+
+.hero-badge__dot {
+	fill: var(--court);
+}
+
+/* real <h1> stays in the DOM for screen readers and SEO */
+.visually-hidden {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* ---------- Badge + filler copy layout ----------
+   Narrow: badge, then both paragraphs stacked below it.
+   Wide (>=1100px): left copy | badge | right copy, hugging the badge. */
+.hero-inner {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	grid-template-areas:
+		"badge"
+		"left"
+		"right";
+	justify-items: center;
+	align-items: center;
+	row-gap: clamp(0.75rem, 2.5dvh, 1.75rem);
+}
+
+.hero-logo {
+	grid-area: badge;
+}
+
+.hero-blurb {
+	margin: 0;
+	max-width: 34rem;
+	font-family: var(--font-body);
+	font-size: clamp(0.95rem, 1.05vw, 1.1rem);
+	line-height: 1.65;
+	color: #cfe4f7;
+	text-align: center;
+	text-wrap: pretty;
+	text-shadow: 0 1px 14px rgba(0, 0, 0, 0.7);
+}
+
+.hero-blurb--left {
+	grid-area: left;
+}
+
+.hero-blurb--right {
+	grid-area: right;
+}
+
+/* inside the one-screen panel: leave room for the copy under the badge */
+@media (min-width: 768px) {
+	.hero-badge {
+		width: min(88vw, 520px, 48dvh);
+	}
+}
+
+@media (min-width: 1100px) {
+	.hero-inner {
+		max-width: 1280px;
+		grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+		grid-template-areas: "left badge right";
+		column-gap: clamp(2rem, 4vw, 4rem);
+	}
+
+	.hero-badge {
+		width: min(40vw, 520px, 70dvh);
+	}
+
+	.hero-blurb {
+		max-width: 22rem;
+	}
+
+	.hero-blurb--left {
+		justify-self: end;
+		text-align: right;
+	}
+
+	.hero-blurb--right {
+		justify-self: start;
+		text-align: left;
+	}
+}
+
+/* below 768px panels stack vertically at a fixed height; let this one grow */
+@media (max-width: 767px) {
+	&.horizontal__panel {
+		height: auto;
+		container-type: normal; /* size containment would collapse an auto-height panel to 0 */
+	}
+}
+
+.hero .eyebrow {
+	color: #8fc4ee;
+	margin-bottom: 0.9rem;
+}
+
+.hero h1 {
+	font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+	font-weight: 700;
+	letter-spacing: 0.01em;
+	line-height: 1.05;
+}
+
+.hero-role {
+	margin-top: 1.35rem;
+	font-family: "IBM Plex Mono", ui-monospace, monospace;
+	font-size: clamp(0.82rem, 2vw, 0.95rem);
+	color: #cfe4f7;
+	letter-spacing: 0.02em;
+}
+
+.hero-divider {
+	width: 3rem;
+	height: 3px;
+	background: var(--court);
+	margin: 1.9rem auto 0;
+	border-radius: 2px;
+}
+
+}
