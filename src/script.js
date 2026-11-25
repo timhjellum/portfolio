@@ -8,6 +8,8 @@ import './fonts/poppins-600.woff2';
 import './fonts/ibm-plex-mono-500.woff2';
 import './fonts/sora-800.woff2';
 import './fonts/oswald-600.woff2';
+import './fonts/montserrat-var.woff2';
+import './fonts/waltographUI.ttf';
 // scripts
 import './scripts/gsap-rotating-text.js';
 import './scripts/gsap-horizontal-scroll.js';
@@ -17,6 +19,7 @@ import './scripts/fastsigns.js';
 import './scripts/lenis.js';
 import './scripts/nav.js';
 import './scripts/show-less-more.js';
+import './scripts/disney.js';
 // images
 import './images/001.webp';
 import './images/002.webp';
@@ -59,6 +62,23 @@ import './images/icon-192.png';
 import './images/icon-mask.png';
 import './images/icon-512.png';
 import './images/og-image.jpg';
+// images referenced from index.html (Disney)
+import './images/disney-meetings__bg--back.png';
+import './images/monorail.png';
+import './images/disney-videos__main-character.png';
+import './images/disney-maps__bg.png';
+import './images/disney-videos--01.webp';
+import './images/disney-videos--02.webp';
+import './images/disney-videos--03.webp';
+import './images/disney-videos--04.webp';
+import './images/disney-videos--05.webp';
+import './images/disney-videos--06.webp';
+import './images/disney-videos--07.webp';
+import './images/disney-videos--08.webp';
+import './images/disney-videos--09.webp';
+import './images/disney-videos--10.webp';
+import './images/disney-videos--11.webp';
+import './images/disney-videos--12.webp';
 // root files
 import '/favicon.ico';
 import '/manifest.webmanifest';

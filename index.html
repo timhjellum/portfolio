@@ -469,8 +469,275 @@
             </div>
         </div>
     </section>
-    <section class="section-resource disney">
-       
+    <section class="disney" aria-label="Disney case studies">
+        <!-- ============================================================
+             MEETINGS & EVENTS
+             ============================================================ -->
+        <section class="parallax-wrapper" id="me-wrapper" aria-label="Disney Meetings and Events">
+            <div class="stage-sticky" id="me-stage-sticky">
+                <div class="stage">
+
+                    <!-- SUN -->
+                    <div class="layer sun-layer" id="me-sun">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <filter id="disney-meetings__bg--back" height="100%" width="100%">
+                                <feImage href="/images/disney-meetings__bg--back.png"></feImage>
+                            </filter>
+                            <circle filter="url(#disney-meetings__bg--back)" cx="500" cy="800" r="480" stroke="black" stroke-width="3" fill="transparent" />
+                        </svg>
+                    </div>
+
+                    <!-- GROUND (static, "fixed to the bottom"; artwork is a CSS background) -->
+                    <div class="layer ground-layer"></div>
+
+                    <!-- TRACK -->
+                    <div class="layer track-layer">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <rect class="placeholder-box" x="0" y="660" width="2121" height="78" />
+                        </svg>
+                    </div>
+
+                    <!-- MONORAIL (position driven from JS on scroll) -->
+                    <div class="layer train-layer" id="me-train">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <image href="/images/monorail.png" y="560" style="width: 94%; aspect-ratio: 2839 / 205;" />
+                        </svg>
+                    </div>
+
+                    <div class="layer header-layer">
+                        <div>
+                            <h1>Disney's</h1>
+                            <h2><span>M</span><span>E</span><span>E</span><span>T</span><span>I</span><span>N</span><span>G</span><span>S</span> <span>&amp;</span> <span>E</span><span>V</span><span>E</span><span>N</span><span>T</span><span>S</span></h2>
+                            <p>Led the user experience redesign of Disney’s Meetings &amp; Events website, reimagining the information architecture, navigation, and user journeys to create a seamless, intuitive, and engaging experience for exploring venues, planning events, and discovering Disney’s unique offerings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             WEDDINGS & HONEYMOONS
+             ============================================================ -->
+        <section class="honeymoons-section" id="wh-section" aria-label="Disney Weddings and Honeymoons">
+            <div class="stage-sticky" id="wh-stage-sticky">
+                <div class="frame">
+                    <div id="scene" class="scene" role="img" aria-label="Enchanted carriage with magical floating lights and fireworks.">
+                        <div class="art">
+                            <div class="layer header-layer">
+                                <div>
+                                    <h1>Disney's</h1>
+                                    <h2><span>W</span><span>e</span><span>d</span><span>d</span><span>i</span><span>n</span><span>g</span><span>s</span> <span>&amp;</span> <span>H</span><span>O</span><span>N</span><span>E</span><span>Y</span><span>M</span><span>O</span><span>O</span><span>N</span><span>S</span></h2>
+                                    <p>Led the user experience redesign of Disney’s Weddings &amp; Honeymoons website, reimagining the information architecture, navigation, and user journeys to create an elegant, intuitive, and emotionally engaging experience that inspires couples to explore destinations, personalize their celebrations, and plan unforgettable weddings and honeymoons.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="atmosphere" aria-hidden="true"></div>
+                        <canvas id="fx" aria-hidden="true"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             VIDEOS
+             ============================================================ -->
+        <section class="videos-section" id="disney-videos" aria-label="Disney Videos">
+            <div class="stage-sticky" id="dv-stage-sticky">
+                <div class="stage">
+
+                    <!-- ACCENT SHAPES (pop in + hover, behind the character).
+                         transform-origin is each shape's own center so it grows from itself -->
+                    <div class="layer pop-layer blob-layer" id="dv-blob-1" style="transform-origin:8.49% 24.05%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1,0,0,1,-90,70)">
+                                <pattern id="dv-pat-1" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--09.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-1)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-2" style="transform-origin:35.85% 39.59%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.36974,0,0,1.36974,390.421,189.921)">
+                                <pattern id="dv-pat-2" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--08.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-2)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-3" style="transform-origin:81.09% 16.97%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.15789,0,0,1.15789,1407.37,-72.6316)">
+                                <pattern id="dv-pat-3" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--07.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-3)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-4" style="transform-origin:13.68% 57.30%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.73684,0,0,1.73684,-178.947,341.053)">
+                                <pattern id="dv-pat-4" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--06.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-4)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-5" style="transform-origin:54.70% 27.58%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.79079,0,0,1.79079,676.737,-93.5132)">
+                                <pattern id="dv-pat-5" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--05.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-5)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-6" style="transform-origin:84.87% 77.79%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.78947,0,0,1.78947,1316.84,616.842)">
+                                <pattern id="dv-pat-6" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--04.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-6)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-7" style="transform-origin:91.00% 14.14%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1,0,0,1,1660,-70)">
+                                <pattern id="dv-pat-7" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--03.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-7)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-8" style="transform-origin:19.79% 18.41%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.36974,0,0,1.36974,49.9211,-109.579)">
+                                <pattern id="dv-pat-8" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--02.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-8)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-9" style="transform-origin:88.63% 52.33%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.15789,0,0,1.15789,1567.37,427.368)">
+                                <pattern id="dv-pat-9" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--01.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-9)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-10" style="transform-origin:58.94% 71.44%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.73684,0,0,1.73684,781.053,541.053)">
+                                <pattern id="dv-pat-10" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--11.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-10)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-11" style="transform-origin:30.19% 35.35%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.79079,0,0,1.79079,156.737,16.2368)">
+                                <pattern id="dv-pat-11" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--10.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-11)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="layer pop-layer blob-layer" id="dv-blob-12" style="transform-origin:23.57% 76.38%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.78947,0,0,1.78947,16.8421,596.842)">
+                                <pattern id="dv-pat-12" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos--12.webp" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-12)" d="M460,175l0,190c0,52.432 -42.568,95 -95,95l-190,0c-52.432,0 -95,-42.568 -95,-95l0,-190c0,-52.432 42.568,-95 95,-95l190,0c52.432,0 95,42.568 95,95Z" />
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- MAIN CHARACTER (bounces in from below) -->
+                    <div class="layer character-layer" id="dv-character">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1.26977,0,0,1.26977,550.326,1615.16)">
+                                <pattern id="dv-pat-character" width="1" height="1" patternContentUnits="objectBoundingBox">
+                                    <image href="/images/disney-videos__main-character.png" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                                </pattern>
+                                <path fill="url(#dv-pat-character)" d="M540,-805l0,430c0,118.662 -96.338,215 -215,215l-430,0c-118.662,0 -215,-96.338 -215,-215l0,-430c0,-118.662 96.338,-215 215,-215l430,0c118.662,0 215,96.338 215,215Z" />
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="layer header-layer">
+                        <div>
+                            <h1>Disney's</h1>
+                            <h2><span>V</span><span>I</span><span>D</span><span>E</span><span>O</span><span>S</span></h2>
+                            <p>Led the user experience redesign of Disney’s Videos website, reimagining the information architecture, content discovery, and video navigation to create an immersive, intuitive, and engaging experience that makes it easier for audiences to explore, discover, and enjoy Disney’s extensive library of digital entertainment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             INTERACTIVE MAPS
+             ============================================================ -->
+        <section class="maps-section" id="disney-maps" aria-label="Disney Interactive Maps">
+            <div class="stage-sticky" id="mp-stage-sticky">
+                <div class="stage">
+
+                    <!-- MAP (slides up into its resting position) -->
+                    <div class="layer map-layer" id="mp-map">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(0.991121,0,0,1,39.6449,0)">
+                                <defs>
+                                    <linearGradient id="mp-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#0077b6" />
+                                        <stop offset="100%" stop-color="#caf0f8" />
+                                    </linearGradient>
+                                </defs>
+                                <rect x="-40" y="-800" width="2140" height="2214" fill="url(#mp-sky)" />
+                                <image href="/images/disney-maps__bg.png" x="-40" y="-800" width="2140" height="2214" preserveAspectRatio="xMidYMid slice" />
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- CALLOUT (pops in, then hovers) -->
+                    <div class="layer pop-layer callout-layer" id="mp-callout" style="transform-origin:37.18% 40.97%;">
+                        <svg class="layer-svg" viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                            <g transform="matrix(1,0,0,1,221.592,-5.15487)">
+                                <g transform="matrix(0.233591,0,0,0.186602,-472.598,197.262)">
+                                    <path d="M5000,1795.08l-0,290.165c-0,80.073 -51.932,145.083 -115.898,145.083l-278.539,-0l-159.776,269.669l-158.27,-269.669l-271.619,-0c-63.966,-0 -115.898,-65.01 -115.898,-145.083l0,-290.165c0,-80.074 51.932,-145.083 115.898,-145.083l868.204,-0c63.966,-0 115.898,65.009 115.898,145.083Z" fill="white" />
+                                </g>
+                                <g transform="matrix(1,0,0,1,-3561.59,-1244.85)">
+                                    <text x="4028.69" y="1817.44" font-family="'Arial-BoldMT','Arial',sans-serif" font-weight="700" font-size="33.333" fill="#14284a">You are here</text>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="layer header-layer">
+                        <div>
+                            <h1>Disney's</h1>
+                            <h2><span>I</span><span>N</span><span>T</span><span>E</span><span>R</span><span>A</span><span>C</span><span>T</span><span>I</span><span>V</span><span>E</span> <span>M</span><span>A</span><span>P</span><span>S</span></h2>
+                            <p>Led the user experience redesign of Disney’s Interactive Maps, reimagining the interface, spatial navigation, and location-based interactions to create an intuitive, immersive, and responsive experience that helps guests explore destinations, discover attractions and amenities, and navigate Disney’s parks and resorts with ease.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
 
 </body>

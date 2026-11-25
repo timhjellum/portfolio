@@ -1,0 +1,708 @@
+/* ==========================================================================
+   DISNEY CASE STUDIES — four scroll-choreographed sections
+   (ported from the Disney CodePen; JS lives in scripts/disney*.js)
+
+     #me-wrapper     Meetings & Events      sticky stage, monorail scrubbed by scroll
+     #wh-section     Weddings & Honeymoons  canvas lights + fireworks
+     #disney-videos  Videos                 character bounces in, 12 shapes pop + float
+     #disney-maps    Interactive Maps       map slides up, "You are here" pops + floats
+
+   Everything is scoped under .disney so the pen's generic selectors
+   (h1, h2, .stage, .layer, canvas …) can't leak into other sections.
+   The pen's page-level rules (html/body background, * box-sizing,
+   demo .filler blocks) were dropped; the site already handles those.
+   ========================================================================== */
+
+.disney {
+	--stage-w: 2121;
+	--stage-h: 1414;
+	--night: #071539;
+	--glow1: rgba(255, 239, 186, 0.85);
+	--glow2: rgba(176, 231, 255, 0.75);
+	--glow3: rgba(255, 206, 238, 0.72);
+
+	position: relative;
+	width: 100%;
+	max-width: 1280px; /* content column, like the other case studies */
+	margin-inline: auto;
+	background: var(--bg-color);
+	color: #e8e8e8;
+	font-family: var(--font-body);
+
+	/* ---------- generic "SVG artboard filling its container" ----------
+	   every layer is <div class="layer"><svg class="layer-svg"
+	   viewBox="0 0 2121 1414" preserveAspectRatio="xMidYMid slice">,
+	   which keeps every layer aspect-correct and pixel-aligned to every
+	   other layer at any viewport size */
+	.layer {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.layer-svg {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+
+	.stage {
+		width: 100%;
+		max-width: calc(var(--stage-w) * 1px);
+		aspect-ratio: ~"var(--stage-w) / var(--stage-h)";
+		height: unset !important;
+		overflow: clip;
+	}
+
+	@media (min-width: 1024px) {
+		.stage {
+			min-height: 680px;
+			border: none;
+		}
+	}
+
+	/* ---------- section titles ---------- */
+	h1 {
+		text-transform: lowercase;
+		font-family: "Waltograph", sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		text-align: center;
+		font-size: clamp(1.1rem, 5.5vw, 3rem);
+		line-height: 1.4; /* Waltograph's own line box is short; this keeps the subtitle from riding up into it */
+		padding: 0;
+		margin: 0;
+	}
+
+	h1:first-letter {
+		text-transform: uppercase;
+		font-size: 130%;
+	}
+
+	h2 {
+		padding: 0;
+		margin: 0.5em 0;
+	}
+
+	h2 span {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 200 !important;
+		font-size: clamp(1.1rem, 5.5vw, 3rem);
+		letter-spacing: 1.7px;
+		display: inline-block;
+		animation: pop 0.4s ease-in-out;
+	}
+
+	.h2-delays(@i) when (@i =< 17) {
+		h2 span:nth-child(@{i}) {
+			animation-delay: (0.3s + @i * 0.1s);
+		}
+		.h2-delays(@i + 1);
+	}
+	.h2-delays(1);
+
+	/* ---------- header panel: readable frosted card, top right ---------- */
+	.header-layer {
+		position: relative;
+	}
+
+	.header-layer > div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 1.5em 2.5em;
+	}
+
+	.header-layer > div:first-child {
+		top: clamp(12px, 2.5vw, 40px);
+		right: clamp(12px, 2.5vw, 40px);
+		width: min(36rem, 44vw);
+		padding: clamp(18px, 2.2vw, 32px) clamp(20px, 2.6vw, 40px);
+		background: rgba(var(--ink-1--rgb), 0.72);
+		-webkit-backdrop-filter: blur(12px) saturate(1.2);
+		backdrop-filter: blur(12px) saturate(1.2);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: 20px;
+		box-shadow: 0 18px 50px -12px rgba(0, 0, 0, 0.6);
+		color: #fff;
+		container-type: inline-size; /* lets the title size itself to the panel */
+	}
+
+	.header-layer > div:first-child h1,
+	.header-layer > div:first-child h2 span {
+		color: #fff;
+	}
+
+	/* one line, never split mid-word; sized to the panel width */
+	.header-layer > div:first-child h2 {
+		margin: 0.35em 0 0.6em;
+		text-align: center;
+		line-height: 1.1;
+		white-space: nowrap;
+		text-transform: uppercase;
+	}
+
+	.header-layer > div:first-child h2 span {
+		font-size: clamp(1rem, 5.2cqi, 2.4rem);
+		font-weight: 300 !important;
+	}
+
+	.header-layer > div:first-child p {
+		margin: 0;
+		max-width: 60ch;
+		font-size: clamp(0.95rem, 0.75rem + 0.55vw, 1.15rem);
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	.header-layer.in-view {
+		background: linear-gradient(11deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, #000 100%);
+	}
+
+	.more-btn {
+		display: none;
+	}
+
+	/* MOBILE: compact centered title + "More" button. The stage is short
+	   on phones and clips its contents, so the description is hidden and
+	   the More button (scripts/disney.js) opens it in a bottom sheet. */
+	@media (max-width: 760px) {
+		.header-layer > div:first-child {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			container-type: normal; /* would collapse a content-sized box to zero width */
+			top: 8px;
+			right: 8px;
+			bottom: auto;
+			left: auto;
+			width: max-content;
+			max-width: calc(100% - 16px);
+			padding: 10px 16px 12px;
+			border-radius: 14px;
+		}
+
+		.header-layer > div:first-child h1 {
+			font-size: 1rem;
+			text-align: center;
+		}
+
+		.header-layer > div:first-child h2 {
+			margin: 0.15em 0 0;
+			text-align: center;
+		}
+
+		.header-layer > div:first-child h2 span {
+			font-size: clamp(0.75rem, 4.2vw, 1.3rem);
+			letter-spacing: 1px;
+		}
+
+		.header-layer > div:first-child p {
+			display: none;
+		}
+
+		/* look comes from the site's .btn.primary (shared.less); only layout here */
+		.more-btn {
+			margin-top: 8px;
+			display: inline-flex;
+			align-items: center;
+			pointer-events: auto; /* the Meetings & Events header disables pointer events */
+		}
+	}
+
+	/* ---------- shared placeholder styling for empty image slots ---------- */
+	.placeholder-box {
+		fill: rgba(255, 255, 255, 0.15);
+		stroke: rgba(255, 255, 255, 0.6);
+		stroke-width: 3;
+		stroke-dasharray: 14 10;
+	}
+
+	/* ---------- shared "pops in, then settles into an idle hover" ----------
+	   used by the Videos accent shapes and the Maps callout. Each element
+	   sets its own transform-origin inline so it pops from its own center. */
+	.pop-layer {
+		opacity: 0;
+		transform: scale(0.4);
+	}
+
+	.pop-layer.pop-in {
+		animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+	}
+
+	.pop-layer.hover {
+		/* opacity pinned here: removing .pop-in drops the animation fill */
+		opacity: 1;
+		animation: hoverFloat 2.6s ease-in-out infinite alternate;
+	}
+
+	/* ======================================================================
+	   MEETINGS & EVENTS — the wrapper is taller than the viewport, an inner
+	   .stage-sticky pins to the screen, and JS drives the monorail's
+	   position directly from scroll progress
+	   ====================================================================== */
+	#me-wrapper {
+		position: relative;
+		height: 280vh; /* how long the section stays pinned — tune to taste */
+	}
+
+	#me-wrapper .stage-sticky {
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		overflow: hidden;
+	}
+
+	#me-wrapper .stage {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url("../images/disney-meetings__bg--top.png");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position-y: top;
+	}
+
+	/* sun: bounces in once when the section enters view */
+	#me-wrapper .sun-layer {
+		transform: translateY(130%);
+		opacity: 0;
+	}
+
+	#me-wrapper .sun-layer.in-view {
+		animation: bounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+	}
+
+	/* ground: static, "fixed to the bottom" */
+	#me-wrapper .ground-layer {
+		z-index: 2;
+		background-image: url("../images/disney-meetings__bg--bottom.png");
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	#me-wrapper .track-layer {
+		z-index: 3;
+	}
+
+	#me-wrapper .track-layer .placeholder-box {
+		stroke: unset !important;
+	}
+
+	/* monorail: position set from JS every scroll tick */
+	#me-wrapper .train-layer {
+		z-index: 4;
+		transform: translateX(-140%);
+		will-change: transform;
+	}
+
+	#me-wrapper .header-layer {
+		z-index: 5;
+		opacity: 0;
+		transform: translateY(-16px);
+		pointer-events: none;
+	}
+
+	#me-wrapper .header-layer.in-view {
+		animation: fadeSlideDown 0.7s ease-out 0.15s forwards;
+	}
+
+	/* ======================================================================
+	   WEDDINGS & HONEYMOONS — scroll only triggers; the scene is a
+	   fixed-ratio frame (sized in JS) with a canvas of lights + fireworks
+	   ====================================================================== */
+	#wh-section {
+		position: relative;
+		height: 200vh; /* 100vh of scroll + 100vh pinned "pause" */
+	}
+
+	#wh-section .stage-sticky {
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		overflow: hidden;
+		display: grid;
+		place-items: center;
+	}
+
+	.frame {
+		position: relative;
+		width: min(1280px, 100vw);
+		height: min(854px, 100vh);
+		display: grid;
+		place-items: center;
+	}
+
+	.scene {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background:
+			radial-gradient(circle at 50% 18%, rgba(49, 92, 196, 0.25), transparent 35%),
+			radial-gradient(circle at 78% 24%, rgba(109, 216, 255, 0.15), transparent 28%),
+			linear-gradient(180deg, #071539 0%, #081944 55%, #08112b 100%);
+		user-select: none;
+		-webkit-user-select: none;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+	}
+
+	.scene::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(circle at 10% 12%, rgba(95, 156, 255, 0.35) 0 2px, transparent 3px),
+			radial-gradient(circle at 19% 16%, rgba(161, 218, 255, 0.25) 0 2px, transparent 3px),
+			radial-gradient(circle at 86% 10%, rgba(137, 180, 255, 0.25) 0 2px, transparent 3px),
+			radial-gradient(circle at 60% 8%, rgba(255, 255, 255, 0.2) 0 1.5px, transparent 2.5px),
+			radial-gradient(circle at 75% 18%, rgba(255, 255, 255, 0.14) 0 1.5px, transparent 2.5px);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.art {
+		position: absolute;
+		inset: 0;
+		background-image: url("../images/disney-weddings.png");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position-y: top;
+	}
+
+	.atmosphere {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		pointer-events: none;
+		background:
+			radial-gradient(circle at 14% 36%, rgba(85, 146, 255, 0.08), transparent 22%),
+			radial-gradient(circle at 70% 36%, rgba(110, 203, 255, 0.1), transparent 26%),
+			radial-gradient(circle at 50% 84%, rgba(0, 0, 0, 0.18), transparent 40%);
+		mix-blend-mode: screen;
+	}
+
+	#fx {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 3;
+		pointer-events: none;
+	}
+
+	#wh-section .header-layer {
+		z-index: 4;
+		opacity: 1;
+	}
+
+	/* ======================================================================
+	   VIDEOS — scroll only triggers: character bounces in, then the 12
+	   accent shapes pop in over ~1s and settle into a hover
+	   ====================================================================== */
+	#disney-videos {
+		position: relative;
+		height: 200vh;
+		background: transparent;
+	}
+
+	#disney-videos .stage-sticky {
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		overflow: hidden;
+		background: transparent;
+	}
+
+	#disney-videos .stage {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	#disney-videos .character-layer {
+		z-index: 3;
+		transform: translateY(130%);
+		opacity: 0;
+	}
+
+	#disney-videos .character-layer.in-view {
+		animation: bounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+	}
+
+	/* shapes sit behind the character */
+	#disney-videos .blob-layer {
+		z-index: 1;
+	}
+
+	#disney-videos .header-layer {
+		z-index: 4;
+		opacity: 1;
+	}
+
+	/* ======================================================================
+	   INTERACTIVE MAPS — map slides up (no bounce: overshoot would expose
+	   a gap under a full-bleed layer), then the callout pops and floats
+	   ====================================================================== */
+	#disney-maps {
+		position: relative;
+		height: 200vh;
+	}
+
+	#disney-maps .stage-sticky {
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		overflow: hidden;
+	}
+
+	#disney-maps .stage {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	#disney-maps .map-layer {
+		z-index: 1;
+		transform: translateY(12%);
+		opacity: 0;
+	}
+
+	#disney-maps .map-layer.in-view {
+		animation: slideUp 0.6s ease-out forwards;
+	}
+
+	#disney-maps .map-layer svg {
+		background-color: #0077b6;
+		background-image: linear-gradient(135deg, #0077b6, #00b4d8, #90e0ef, #caf0f8);
+		background-size: 400% 400%;
+		animation: animatedGradient 15s ease infinite;
+	}
+
+	#disney-maps .callout-layer {
+		z-index: 2;
+	}
+
+	#disney-maps .callout-layer.hover {
+		animation-duration: 1.6s;
+	}
+
+	#disney-maps .header-layer {
+		z-index: 3;
+		opacity: 1;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		h2 span,
+		.pop-layer.hover,
+		#disney-maps .map-layer svg {
+			animation: none;
+		}
+	}
+}
+
+/* ==========================================================================
+   BOTTOM SHEET for the mobile "More" button. It's a <dialog> appended to
+   <body> (outside .disney) so it sits above every stage.
+   ========================================================================== */
+.more-sheet {
+	position: fixed;
+	inset: auto 0 0 0;
+	width: 100%;
+	max-width: 640px;
+	max-height: 85vh;
+	margin: auto auto 0;
+	padding: 0;
+	border: 0;
+	border-radius: 20px 20px 0 0;
+	background: var(--ink-2, #121219);
+	color: #fff;
+	box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.more-sheet::backdrop {
+	background: rgba(0, 0, 0, 0.55);
+	-webkit-backdrop-filter: blur(3px);
+	backdrop-filter: blur(3px);
+}
+
+.more-sheet[open] {
+	animation: sheetUp 0.28s ease-out;
+}
+
+.more-sheet__inner {
+	max-height: 85vh;
+	overflow: auto;
+	padding: 24px 22px 32px;
+}
+
+.more-sheet h1 {
+	margin: 0;
+	font-family: "Waltograph", sans-serif;
+	font-weight: normal;
+	font-size: 1.5rem;
+	text-align: left;
+	text-transform: lowercase;
+	color: #fff;
+}
+
+.more-sheet h1:first-letter {
+	text-transform: uppercase;
+	font-size: 130%;
+}
+
+.more-sheet h2 {
+	margin: 0.2em 3rem 0.8em 0;
+	text-transform: uppercase;
+}
+
+.more-sheet h2 span {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 300;
+	font-size: 1.4rem;
+	color: #fff;
+	animation: none;
+}
+
+.more-sheet p {
+	margin: 0;
+	font-family: var(--font-body);
+	font-size: 1rem;
+	line-height: 1.65;
+	color: rgba(255, 255, 255, 0.92);
+}
+
+.more-sheet__close {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	width: 40px;
+	height: 40px;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.12);
+	color: #fff;
+	font-size: 1.5rem;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.more-sheet__close:focus-visible {
+	outline: 3px solid #fff;
+	outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.more-sheet[open] {
+		animation: none;
+	}
+}
+
+/* ==========================================================================
+   Keyframes (names kept from the pen: scripts/disney-parallax.js listens
+   for "popIn" by name)
+   ========================================================================== */
+@keyframes pop {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.5);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes bounceIn {
+	0% {
+		transform: translateY(130%);
+		opacity: 0;
+	}
+	55% {
+		transform: translateY(-6%);
+		opacity: 1;
+	}
+	75% {
+		transform: translateY(3%);
+	}
+	90% {
+		transform: translateY(-1%);
+	}
+	100% {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+}
+
+@keyframes fadeSlideDown {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes popIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.4);
+	}
+	70% {
+		opacity: 1;
+		transform: scale(1.08);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes hoverFloat {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-14px);
+	}
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(12%);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes animatedGradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes sheetUp {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
