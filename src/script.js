@@ -46,7 +46,7 @@ import './images/marquee-010.webp';
 import './images/marquee-011.webp';
 import './images/marquee-012.webp';
 
-import './videos/underground-films--landing.mp4';
+import './images/underground-films--landing.mp4';
 
 import './images/underground-films--filter.webp';
 import './images/underground-films--landing.webp';
