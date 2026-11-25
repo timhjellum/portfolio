@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fastsigns.netlify.app/sitemap.xml
+Sitemap: https://atomic-labs.netlify.app/sitemap.xml
