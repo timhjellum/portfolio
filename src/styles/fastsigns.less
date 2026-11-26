@@ -250,3 +250,28 @@ position: relative;
     
   }
 }
+
+/* ---------- Wide screens: let the hero's light bleed past the 1280px column ----------
+   Overlays span the full screen. The two colored glows are re-anchored in px
+   (relative to the 1280px column) so they stay behind the globe / headline
+   instead of drifting outward as the layer widens. */
+@layer fastsigns {
+	@media (min-width: 1281px) {
+		.fastsigns .hero {
+			overflow: visible;
+		}
+
+		.fastsigns .hero:before,
+		.fastsigns .hero:after {
+			left: calc(50% - 50vw);
+			right: calc(50% - 50vw);
+		}
+
+		/* same glows as above: 74%/8% and 42%/40% of 1280px, now in px from the center */
+		.fastsigns .hero:before {
+			background:
+				radial-gradient(538px 55% at calc(50% + 307px) 50%, rgba(74, 114, 255, 0.22) 0%, rgba(74, 114, 255, 0) 70%),
+				radial-gradient(512px 50% at calc(50% - 538px) 85%, rgba(255, 59, 78, 0.16) 0%, rgba(255, 59, 78, 0) 70%);
+		}
+	}
+}

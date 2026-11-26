@@ -6,6 +6,8 @@
 @import "./styles/shared.less";
 @import "./styles/fonts.less";
 /* ***** */
+@import "./styles/intro.less";
+/* ***** */
 @import "./styles/fastsigns.less";
 @import "./styles/fastsigns-globe.less";
 /* ***** */

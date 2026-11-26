@@ -267,3 +267,19 @@
 		animation: none;
 	}
 }
+/* ---------- Wide screens: let the hero's light bleed past the 1280px column ----------
+   Content stays in the column; the overlays span the full screen and the card's glow
+   is no longer clipped, so there's no hard edge at 1280px. */
+@layer mastercard {
+	@media (min-width: 1281px) {
+		.mastercard .hero {
+			overflow: visible;
+		}
+
+		.mastercard .hero:before,
+		.mastercard .hero:after {
+			left: calc(50% - 50vw);
+			right: calc(50% - 50vw);
+		}
+	}
+}

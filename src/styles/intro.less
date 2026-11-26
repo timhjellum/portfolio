@@ -1,0 +1,141 @@
+/* ==========================================================================
+   INTRO — pinned for a few screens of scroll (scripts/intro.js):
+     1. the headline travels across the screen, right to left
+     2. the paragraph rises in where the headline was
+     3. the scroll cue appears
+   Without JS or with reduced motion, it's simply a centered heading + text.
+   ========================================================================== */
+.intro {
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	min-height: 100svh;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: clamp(1.5rem, 4vh, 3rem);
+	padding: 0 clamp(20px, 6vw, 64px);
+
+	h1 {
+		margin: 0;
+		font-family: "Merriweather", serif;
+		font-weight: 500;
+		font-size: clamp(2.5rem, 7.5vw, 4.5rem);
+		line-height: 1.05;
+		letter-spacing: -0.02em;
+		color: #fff;
+		text-align: center;
+	}
+
+	p {
+		margin: 0;
+		max-width: 38ch;
+		font-family: var(--font-body);
+		font-size: clamp(1.1rem, 1.6vw, 1.45rem);
+		line-height: 1.6;
+		color: var(--text);
+		text-align: center;
+		text-wrap: pretty;
+	}
+
+	/* scroll-driven version (class added by intro.js) */
+	&.is-animated {
+		display: block;
+		height: 100vh;
+		height: 100svh;
+		padding: 0;
+
+		/* centered with inset + auto margins, not translate: GSAP owns transform here */
+		h1 {
+			position: absolute;
+			inset: 0 auto 0 0;
+			height: fit-content;
+			margin-block: auto;
+			font-size: clamp(4rem, 14vw, 13rem); /* billboard size while it travels */
+			white-space: nowrap;
+			will-change: transform;
+		}
+
+		p {
+			position: absolute;
+			inset: 0;
+			width: min(38ch, calc(100% - 40px));
+			height: fit-content;
+			margin: auto;
+		}
+	}
+}
+
+/* ==========================================================================
+   SCROLL CUE — pulsating "keep scrolling" arrow
+   Used at the bottom of the landing screen and after the intro paragraph.
+   ========================================================================== */
+.scroll-cue {
+	position: absolute;
+	left: 50%;
+	bottom: clamp(20px, 5vh, 48px);
+	z-index: 2;
+	width: 48px;
+	height: 48px;
+	translate: -50% 0;
+	display: grid;
+	place-items: center;
+	border: 1px solid rgba(45, 197, 255, 0.45); /* --sky */
+	border-radius: 50%;
+	color: #fff;
+	pointer-events: none;
+
+	/* expanding ring */
+	&::before {
+		content: "";
+		position: absolute;
+		inset: -1px;
+		border-radius: 50%;
+		border: 1px solid var(--sky);
+		animation: scroll-cue-ring 2s ease-out infinite;
+	}
+
+	svg {
+		width: 22px;
+		height: 22px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		animation: scroll-cue-bob 2s ease-in-out infinite;
+	}
+}
+
+@keyframes scroll-cue-ring {
+	0% {
+		transform: scale(1);
+		opacity: 0.9;
+	}
+	80%,
+	100% {
+		transform: scale(1.7);
+		opacity: 0;
+	}
+}
+
+@keyframes scroll-cue-bob {
+	0%,
+	100% {
+		transform: translateY(-3px);
+		opacity: 0.65;
+	}
+	50% {
+		transform: translateY(4px);
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.scroll-cue::before,
+	.scroll-cue svg {
+		animation: none;
+	}
+}

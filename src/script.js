@@ -13,6 +13,7 @@ import './fonts/waltographUI.ttf';
 // scripts
 import './scripts/gsap-rotating-text.js';
 import './scripts/gsap-horizontal-scroll.js';
+import './scripts/intro.js';
 import './scripts/gsap-globe.js';
 import './scripts/gsap-tabs.js';
 import './scripts/fastsigns.js';

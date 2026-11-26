@@ -23,8 +23,6 @@
     background-size: var(--grid-size) var(--grid-size);
     width: 100%;
     height: 100%;
-    //animation: bg-scrolling 5s infinite;
-    //animation-timing-function: linear;
     &:after {
       content: "";
       position: absolute;
@@ -41,6 +39,7 @@
   }
 
   .landing {
+    position: relative; /* anchors the scroll cue */
     min-height: 100vh;
     width: 100%;
     max-width: var(--max-width);
