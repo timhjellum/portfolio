@@ -1,26 +1,15 @@
 /* theme vars scoped to this section so they don't override other panels' --accent/--line */
 .orlando-magic {
-	--bg-solid: #05070a;
-	--grad-start: #0c3868;
-	--grad-mid: #050e1c;
-	--grad-end: #000000;
-	--surface: #141c26;
-	--surface-2: #1c2733;
 	--ink: #eef1f4;
-	--ink-soft: #a9b7c2;
 	--ink-faint: #7c8b97;
 	--accent: #3fa3e8;
-	--accent-ink: #041426;
 	--navy: #041e42;
 	--court: #e0a561;
-	--silver: #4c5761;
 	--line: rgba(238, 241, 244, 0.14);
 	--shadow: 0 18px 44px -20px rgba(0, 0, 0, 0.65);
 	--nav-bg: rgba(5, 7, 10, 0.86);
-	--scrim-strong: rgba(0, 0, 0, 0.92);
 	--stripe-3: rgba(238, 241, 244, 0.14);
 	--stripe-3-alt: rgba(5, 7, 10, 0.25);
-
 }
 
 .orlando-magic {
@@ -65,7 +54,7 @@
 	width: 100%;
 	container-type: size;
 
-	@media (min-width: 768px) {
+	@media @mq-md {
 		&.horizontal__panel > .horizontal__panel-inner {
 			display: flex;
 			flex-direction: column;
@@ -357,13 +346,13 @@ h3 {
 }
 
 /* inside the one-screen panel: leave room for the copy under the badge */
-@media (min-width: 768px) {
+@media @mq-md {
 	.hero-badge {
 		width: min(88vw, 520px, 48dvh);
 	}
 }
 
-@media (min-width: 1100px) {
+@media @mq-xl {
 	.hero-inner {
 		max-width: 1280px;
 		grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -390,11 +379,17 @@ h3 {
 	}
 }
 
-/* below 768px panels stack vertically at a fixed height; let this one grow */
-@media (max-width: 767px) {
+/* phones: panels stack vertically; let this one grow to fit its content */
+&.horizontal__panel {
+	height: auto;
+	container-type: normal; /* size containment would collapse an auto-height panel to 0 */
+}
+
+/* from @md it's a one-screen panel in the horizontal scroller */
+@media @mq-md {
 	&.horizontal__panel {
-		height: auto;
-		container-type: normal; /* size containment would collapse an auto-height panel to 0 */
+		height: 100%;
+		container-type: size;
 	}
 }
 

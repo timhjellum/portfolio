@@ -3,11 +3,6 @@
    with the logo marquee pinned to the bottom instead of a card.
    ========================================================================== */
 
-/* Shared page background (see variables.less ink scale) */
-:root {
-  --bg: var(--bg-color);
-}
-
 .travel {
   --tr-accent: #ff7a45;
   --tr-pop: #f2a93c;
@@ -116,7 +111,7 @@
 }
 
 /* ----- one screen tall: hero fills the space above the marquee ----- */
-@media (min-width: 768px) {
+@media @mq-md {
   .horizontal__panel.travel > .horizontal__panel-inner {
     display: flex;
     flex-direction: column;
@@ -210,7 +205,7 @@
 /* ---------- Wide screens: let the photo bleed past the 1280px column ----------
    The photo moves from .hero onto the full-width :before layer (with the same
    dark wash on top) and fades softly into the page at the screen edges. */
-@media (min-width: 1281px) {
+@media @mq-xl {
   .travel .hero {
     overflow: visible;
     background-image: none;

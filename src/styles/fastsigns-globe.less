@@ -18,14 +18,14 @@
   position: absolute;
   inset: 0%;
   display: flex;
-  gap: 1em;
+  gap: 0.25em;
 }
 
 .globe-gallery__item {
   position: absolute;
   top: 50%;
   left: 50%;
-  border-radius: 0.5em;
+  border-radius: 0.25em;
   overflow: hidden;
 }
 
@@ -40,13 +40,13 @@
   object-fit: cover;
 }
 
-@media screen and (max-width: 767px) {
+@media @mq-md {
   .globe-gallery__list {
-    gap: 0.25em;
+    gap: 1em;
   }
 
   .globe-gallery__item {
-    border-radius: 0.25em;
+    border-radius: 0.5em;
   }
 }
 }

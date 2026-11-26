@@ -1,13 +1,9 @@
 @layer fastsigns {
-  :root {
-    --bg: var(--bg-color);
-    --bg-panel: var(--ink-2);
-    --bg-panel-2: var(--ink-3);
-    --text: #f2f4f7;
-    --text-dim: #9aa3b0;
-    --accent: #4a72ff;
-    --pop: #ff3b4e;
-    --line: var(--ink-4);
+  /* Section tokens, scoped to the panel (shared ones live in variables.less).
+     FastSigns intentionally uses the same red -> orange as Mastercard. */
+  .fastsigns {
+    --accent: #ff5f00;
+    --pop: #eb001b;
   }
 
   .fastsigns {
@@ -174,7 +170,7 @@ position: relative;
       width: 100%;
     }
 
-@media (min-width: 768px) {
+@media @mq-md {
       /* ---------- FastSigns ---------- */
       .horizontal__panel.fastsigns .hero {
         min-height: 0; /* cancels min(760px, 92svh) from fastsigns */
@@ -225,28 +221,6 @@ position: relative;
         font-size: min(8.6cqw, 7rem);
       }
     }
-    @media (min-width: 916px) {
-      .horizontal__panel.fastsigns .hero-inner {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  justify-items: stretch;
-}
-.horizontal__panel.fastsigns .hero-copy {
-  grid-column-start: 1;
-  grid-column-end: -1;
-  grid-row: 1;
-}
-.horizontal__panel.fastsigns .globe-stage {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: end;
-}
-      .horizontal__panel.fastsigns .hero-copy h1 {
-        font-size: min(8.6cqw, 17cqh, 7rem);
-      }
-      .horizontal__panel.fastsigns .globe-stage {
-        width: min(100%, 600px, 80cqh);
-      }
-    }
     
   }
 }
@@ -256,7 +230,7 @@ position: relative;
    (relative to the 1280px column) so they stay behind the globe / headline
    instead of drifting outward as the layer widens. */
 @layer fastsigns {
-	@media (min-width: 1281px) {
+	@media @mq-xl {
 		.fastsigns .hero {
 			overflow: visible;
 		}

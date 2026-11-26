@@ -1,29 +1,14 @@
 @layer mastercard {
-	:root {
-		--text-shadow: 0.1cqw 0.1cqw 0.1cqw #000000;
-		--bg: var(--bg-color);
-		--bg-panel: var(--ink-2);
-		--bg-panel-2: var(--ink-3);
-		--text: #f4f3f6;
-		--text-dim: #a2a2ad;
+	/* Section tokens, scoped to the panel (shared ones live in variables.less) */
+	.mastercard {
 		--accent: #ff5f00;
 		--pop: #eb001b;
 
-		// credit card
+		// credit card (credit-card.less)
 		--mc-yellow: #f79e1b;
-		--line: var(--ink-4);
 		--mastercard-red: #eb001b;
-		--mastercard-orange: #fa5e03;
 		--mastercard-circle-size: 7cqw;
-		--start: #454545;
-		--end: #121212;
-		--card-bg-1: #454545;
-		--card-bg-2: #121212;
-		--card-border: #333;
-		--bg-color-1: #0f0f1a;
-		--bg-color-2: #1a1a2e;
-		--bg-color-3: #16213e;
-		--max-width: 1280px;
+		--text-shadow: 0.1cqw 0.1cqw 0.1cqw #000000;
 	}
 
 	.mastercard {
@@ -198,7 +183,7 @@
 			animation: card-float 7s ease-in-out infinite;
 		}
 
-		@media (min-width: 768px) {
+		@media @mq-md {
 			.horizontal__panel.mastercard>.horizontal__panel-inner {
 				padding: 0;
 			}
@@ -233,30 +218,6 @@
 			}
 		}
 
-		@media (min-width: 916px) {
-			.horizontal__panel.fastsigns .hero-copy h1 {
-				font-size: min(8.6cqw, 17cqh, 7rem);
-			}
-
-			.horizontal__panel.fastsigns .globe-stage {
-				width: min(100%, 600px, 80cqh);
-			}
-
-			/* two columns: copy left, card right (see note about mastercard.less) */
-			.horizontal__panel.mastercard .hero--inner {
-				grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-				justify-items: stretch;
-			}
-
-			.horizontal__panel.mastercard .hero--inner h1 {
-				font-size: min(7.5cqw, 24cqh, 7.5rem);
-			}
-
-			.horizontal__panel.mastercard .card-stage {
-				width: min(100%, 560px, 105cqh);
-				justify-self: end;
-			}
-		}
 	}
 }
 
@@ -271,7 +232,7 @@
    Content stays in the column; the overlays span the full screen and the card's glow
    is no longer clipped, so there's no hard edge at 1280px. */
 @layer mastercard {
-	@media (min-width: 1281px) {
+	@media @mq-xl {
 		.mastercard .hero {
 			overflow: visible;
 		}

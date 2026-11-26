@@ -16,10 +16,6 @@
 .disney {
 	--stage-w: 2121;
 	--stage-h: 1414;
-	--night: #071539;
-	--glow1: rgba(255, 239, 186, 0.85);
-	--glow2: rgba(176, 231, 255, 0.75);
-	--glow3: rgba(255, 206, 238, 0.72);
 
 	position: relative;
 	width: 100%;
@@ -55,7 +51,7 @@
 		overflow: clip;
 	}
 
-	@media (min-width: 1024px) {
+	@media @mq-lg {
 		.stage {
 			min-height: 680px;
 			border: none;
@@ -117,19 +113,23 @@
 		padding: 1.5em 2.5em;
 	}
 
+	/* Phones (base): compact centered title + "More" button. The stage is
+	   short on phones and clips its contents, so the description is hidden and
+	   the More button (scripts/disney.js) opens it in a bottom sheet.
+	   From @md the header becomes the full frosted card with the description. */
 	.header-layer > div:first-child {
-		top: clamp(12px, 2.5vw, 40px);
-		right: clamp(12px, 2.5vw, 40px);
-		width: min(36rem, 44vw);
-		padding: clamp(18px, 2.2vw, 32px) clamp(20px, 2.6vw, 40px);
+		top: 8px;
+		right: 8px;
+		width: max-content;
+		max-width: calc(100% - 16px);
+		padding: 10px 16px 12px;
 		background: rgba(var(--ink-1--rgb), 0.72);
 		-webkit-backdrop-filter: blur(12px) saturate(1.2);
 		backdrop-filter: blur(12px) saturate(1.2);
 		border: 1px solid rgba(255, 255, 255, 0.12);
-		border-radius: 20px;
+		border-radius: 14px;
 		box-shadow: 0 18px 50px -12px rgba(0, 0, 0, 0.6);
 		color: #fff;
-		container-type: inline-size; /* lets the title size itself to the panel */
 	}
 
 	.header-layer > div:first-child h1,
@@ -137,9 +137,13 @@
 		color: #fff;
 	}
 
-	/* one line, never split mid-word; sized to the panel width */
+	.header-layer > div:first-child h1 {
+		font-size: 1rem;
+	}
+
+	/* one line, never split mid-word */
 	.header-layer > div:first-child h2 {
-		margin: 0.35em 0 0.6em;
+		margin: 0.15em 0 0;
 		text-align: center;
 		line-height: 1.1;
 		white-space: nowrap;
@@ -147,11 +151,13 @@
 	}
 
 	.header-layer > div:first-child h2 span {
-		font-size: clamp(1rem, 5.2cqi, 2.4rem);
+		font-size: clamp(0.75rem, 4.2vw, 1.3rem);
 		font-weight: 300 !important;
+		letter-spacing: 1px;
 	}
 
 	.header-layer > div:first-child p {
+		display: none;
 		margin: 0;
 		max-width: 60ch;
 		font-size: clamp(0.95rem, 0.75rem + 0.55vw, 1.15rem);
@@ -163,54 +169,45 @@
 		background: linear-gradient(11deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, #000 100%);
 	}
 
+	/* look comes from the site's .btn.primary (shared.less); only layout here */
 	.more-btn {
-		display: none;
+		margin-top: 8px;
+		display: inline-flex;
+		align-items: center;
+		pointer-events: auto; /* the Meetings & Events header disables pointer events */
 	}
 
-	/* MOBILE: compact centered title + "More" button. The stage is short
-	   on phones and clips its contents, so the description is hidden and
-	   the More button (scripts/disney.js) opens it in a bottom sheet. */
-	@media (max-width: 760px) {
+	/* tablet and up: full frosted card, title sized to the card, description shown */
+	@media @mq-md {
 		.header-layer > div:first-child {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			container-type: normal; /* would collapse a content-sized box to zero width */
-			top: 8px;
-			right: 8px;
-			bottom: auto;
-			left: auto;
-			width: max-content;
-			max-width: calc(100% - 16px);
-			padding: 10px 16px 12px;
-			border-radius: 14px;
+			top: clamp(12px, 2.5vw, 40px);
+			right: clamp(12px, 2.5vw, 40px);
+			width: min(36rem, 44vw);
+			max-width: none;
+			padding: clamp(18px, 2.2vw, 32px) clamp(20px, 2.6vw, 40px);
+			border-radius: 20px;
+			container-type: inline-size; /* lets the title size itself to the panel */
 		}
 
 		.header-layer > div:first-child h1 {
-			font-size: 1rem;
-			text-align: center;
+			font-size: clamp(1.1rem, 5.5vw, 3rem);
 		}
 
 		.header-layer > div:first-child h2 {
-			margin: 0.15em 0 0;
-			text-align: center;
+			margin: 0.35em 0 0.6em;
 		}
 
 		.header-layer > div:first-child h2 span {
-			font-size: clamp(0.75rem, 4.2vw, 1.3rem);
-			letter-spacing: 1px;
+			font-size: clamp(1rem, 5.2cqi, 2.4rem);
+			letter-spacing: 1.7px;
 		}
 
 		.header-layer > div:first-child p {
-			display: none;
+			display: block;
 		}
 
-		/* look comes from the site's .btn.primary (shared.less); only layout here */
 		.more-btn {
-			margin-top: 8px;
-			display: inline-flex;
-			align-items: center;
-			pointer-events: auto; /* the Meetings & Events header disables pointer events */
+			display: none;
 		}
 	}
 

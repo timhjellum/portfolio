@@ -1,3 +1,23 @@
+/* ==========================================================================
+   BREAKPOINTS — mobile first
+   Base styles are for phones; each step adds styles from that width up:
+     @media @mq-sm { … }   480px+   large phones
+     @media @mq-md { … }   768px+   tablets / horizontal case-study scroller on
+     @media @mq-lg { … }   992px+   laptops / desktop nav
+     @media @mq-xl { … }  1280px+   wider than the content column
+   Media queries can't read CSS custom properties, so these are LESS variables.
+   scripts/gsap-horizontal-scroll.js uses the same widths (479/767/991).
+   ========================================================================== */
+@bp-sm: 480px;
+@bp-md: 768px;
+@bp-lg: 992px;
+@bp-xl: 1280px;
+
+@mq-sm: ~"(min-width: @{bp-sm})";
+@mq-md: ~"(min-width: @{bp-md})";
+@mq-lg: ~"(min-width: @{bp-lg})";
+@mq-xl: ~"(min-width: @{bp-xl})";
+
 :root {
   color-scheme: dark;
   interpolate-size: allow-keywords;
@@ -30,8 +50,16 @@
   --ink-4--rgb: 34, 34, 44;
 
   --bg-color: var(--ink-1);
-  
-  
+
+  /* semantic aliases shared by the case-study sections */
+  --bg: var(--bg-color);       /* section background */
+  --bg-panel: var(--ink-2);    /* cards, panels */
+  --bg-panel-2: var(--ink-3);  /* raised panels */
+  --line: var(--ink-4);        /* hairlines, borders */
+
+  /* layout */
+  --max-width: 1280px;         /* content column used across the site */
+
   --size-unit: 16; /* body font-size in design - no px */
   //--size-container-ideal: 1440; /* screen-size in design - no px */
   --size-container-min: 320px;
@@ -62,6 +90,7 @@
   --white: #ffffff;
   --off-white: #eeeeee;
   --text: #b5c4de;
+  --text-dim: #a2a2ad;         /* secondary copy */
   --muted: #87859f;
   /* interaction */
   --link: #b98cff;
