@@ -1,0 +1,103 @@
+// Loaded on its own by scripts/cases.js, so pull in the shared variables (outputs no CSS).
+@import (reference) "./variables.less";
+
+/* ==========================================================================
+   HONEYWELL AEROSPACE — case-study panel (#ho)
+   Mobile first, dark only. Page background and text tones come from
+   variables.less; only the Honeywell accent colours are defined here.
+   ========================================================================== */
+
+.ho {
+	--accent: #59b8ee;
+	--red: #ee3124;
+
+	/* ---------- fill the horizontal-scroll panel ---------- */
+	&.horizontal__panel > .horizontal__panel-inner {
+		padding: 0;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* ---------- hero ---------- */
+	.hero {
+		position: relative;
+		overflow: hidden;
+		flex: 1 1 auto;
+		min-height: 100%;
+		display: flex;
+		align-items: center;
+		padding: 40px 20px; /* phones: the panel is only 30em tall */
+		background: var(--bg) url("../images/honeywell__hero.jpg") center 68% / cover no-repeat;
+	}
+
+	/* left-to-right shade so the copy reads over the photo */
+	.hero::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(96deg, rgba(4, 7, 13, 0.96) 0%, rgba(4, 7, 13, 0.9) 30%, rgba(4, 7, 13, 0.48) 58%, rgba(4, 7, 13, 0.12) 100%);
+	}
+
+	/* top and bottom fade into the page background */
+	.hero::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, var(--bg) 0%, rgba(var(--ink-1--rgb), 0) 16%, rgba(var(--ink-1--rgb), 0) 82%, var(--bg) 100%);
+	}
+
+	.hero-inner {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		max-width: 640px;
+	}
+
+	.kicker {
+		display: block;
+		margin-bottom: 18px;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	h1 {
+		margin: 0 0 20px;
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: clamp(2.2rem, 6.2vw, 5rem);
+		line-height: 1.05;
+		color: var(--off-white);
+		text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+		text-wrap: balance;
+
+		em {
+			font-style: normal;
+			color: var(--red);
+		}
+	}
+
+	p {
+		margin: 0;
+		max-width: 520px;
+		font-family: var(--font-body);
+		font-size: clamp(1rem, 1.6vw, 1.2rem);
+		line-height: 1.6;
+		color: var(--off-white);
+		text-shadow: 0 1px 14px rgba(0, 0, 0, 0.7);
+	}
+
+	/* tablets and up: original spacing */
+	@media @mq-md {
+		.hero {
+			padding: clamp(56px, 10vw, 96px) clamp(20px, 6vw, 64px) clamp(64px, 10vw, 100px);
+		}
+
+		h1 {
+			margin-bottom: 26px;
+		}
+	}
+}

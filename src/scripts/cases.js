@@ -48,6 +48,9 @@ const CASES = {
 		css: () => import(/* webpackChunkName: "case-dis" */ '../styles/disney.less'),
 		js: () => import(/* webpackChunkName: "case-dis" */ './disney.js'),
 	},
+	ho: {
+		css: () => import(/* webpackChunkName: "case-ho" */ '../styles/honeywell.less'),
+	},
 	imf: {
 		css: () => import(/* webpackChunkName: "case-imf" */ '../styles/international-monetary-fund.less'),
 		js: () => import(/* webpackChunkName: "case-imf" */ './international-monetary-fund.js'),
@@ -58,7 +61,7 @@ const ALL = Object.keys(CASES);
 
 // Shown when the hash names no known case (or there is no hash at all).
 // Edit this list to change what a plain link shows, e.g. ['fs', 'mc', 'dis'].
-const DEFAULT_CASES = ['fs', 'mc', 'uf', 'tra', 'om', 'dis', 'imf'];
+const DEFAULT_CASES = ['fs', 'mc', 'uf', 'tra', 'om', 'dis', 'imf', 'ho'];
 
 function selectedCases() {
 	const asked = decodeURIComponent(location.hash.replace(/^#/, ''))
@@ -84,7 +87,7 @@ document.querySelectorAll('template[data-case]').forEach((tpl) => {
 	}
 });
 
-// If none of the horizontal-scroll cases (fs, imf, mc, tra, om) were picked, drop the empty scroller.
+// If none of the horizontal-scroll cases (fs, imf, ho, mc, tra, om) were picked, drop the empty scroller.
 document.querySelectorAll('[data-horizontal-scroll-wrap]').forEach((wrap) => {
 	if (!wrap.querySelector('[data-horizontal-scroll-panel]')) wrap.remove();
 });
