@@ -1,11 +1,11 @@
 {
-  "name": "FASTSIGNS Case Study Portfolio",
-  "short_name": "FASTSIGNS",
-  "description": "FASTSIGNS Case Study Portfolio",
+  "name": "Atomic Labs Portfolio",
+  "short_name": "Atomic Labs",
+  "description": "Atomic Labs Portfolio",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#DF212B",
+  "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "icons": [
     {

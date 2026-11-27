@@ -1,7 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="cases-loading">
 
 <head>
+    <!-- Hide case studies until their on-demand styles load (scripts/cases.js) -->
+    <style>.cases-loading [data-case] { visibility: hidden; }</style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="title" content="atomic-labs">
@@ -101,6 +103,7 @@
             <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
         </div>
     </section>
+    <template data-case="uf">
     <section class="parallax-demo-hero underground-films">
         <div data-tabs-autoplay-duration="5000" data-tabs="wrapper" data-tabs-autoplay="true" class="tab-layout__wrap">
             <div class="tab-layout__col">
@@ -233,19 +236,21 @@
             </div>
         </div>
     </section>
+    </template>
     <section class="space"></section>
     <section class="horizontal__wrap" data-horizontal-scroll-wrap data-horizontal-scroll-disable="mobileLandscape">
+        <template data-case="fs">
         <div data-horizontal-scroll-panel class="horizontal__panel fastsigns">
             <div class="hero">
                 <div class="hero-inner">
                     <div class="hero-copy">
-                        <div class="kicker">FastSigns &middot; Website Redesign</div>
+                        <div class="kicker">fastsigns &middot; Website Redesign</div>
                         <h1 class="display">
                             <span>Over 700 Locations</span>
                             <span><em>One website</em></span>
                         </h1>
                         <p>
-                            FastSigns' site had grown to cover everything from vehicle wraps
+                            fastsigns' site had grown to cover everything from vehicle wraps
                             to ADA compliance signage, sold through 700+ independently owned
                             locations — with no shared structure tying it together. I led
                             the IA and UX for a full taxonomy rebuild: one classification
@@ -314,7 +319,9 @@
                 </div>
             </div>
         </div>
+        </template>
         <!-- mastercard -->
+        <template data-case="mc">
         <div data-horizontal-scroll-panel class="horizontal__panel mastercard">
             <div class="horizontal__panel-inner">
                 <div class="hero">
@@ -351,7 +358,9 @@
                 </div>
             </div>
         </div>
+        </template>
         <!-- travel -->
+        <template data-case="tra">
         <div data-horizontal-scroll-panel class="horizontal__panel travel">
             <div class="horizontal__panel-inner">
                 <div class="hero">
@@ -397,6 +406,8 @@
                 </div>
             </div>
         </div>
+        </template>
+        <template data-case="om">
         <div data-horizontal-scroll-panel class="horizontal__panel orlando-magic">
             <div class="horizontal__panel-inner">
                 <div class="hero">
@@ -477,7 +488,9 @@
                 </div>
             </div>
         </div>
+        </template>
     </section>
+    <template data-case="dis">
     <section class="disney" aria-label="Disney case studies">
         <!-- ============================================================
              MEETINGS & EVENTS
@@ -748,6 +761,7 @@
             </div>
         </section>
     </section>
+    </template>
 
 </body>
 

@@ -251,6 +251,9 @@ function initGlobeGallery() {
 }
 
 // Initialize Globe Gallery
-document.addEventListener("DOMContentLoaded", () => {
+// Loaded on demand by cases.js, so the page may already be parsed.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initGlobeGallery);
+} else {
   initGlobeGallery();
-});
+}

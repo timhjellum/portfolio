@@ -11,16 +11,14 @@ import './fonts/oswald-600.woff2';
 import './fonts/montserrat-var.woff2';
 import './fonts/waltographUI.ttf';
 // scripts
+// case studies first: it stamps the #hash-selected sections into the page
+// before the scripts below initialise (see scripts/cases.js)
+import './scripts/cases.js';
 import './scripts/gsap-rotating-text.js';
 import './scripts/gsap-horizontal-scroll.js';
 import './scripts/intro.js';
-import './scripts/gsap-globe.js';
-import './scripts/gsap-tabs.js';
-import './scripts/fastsigns.js';
 import './scripts/lenis.js';
 import './scripts/nav.js';
-import './scripts/show-less-more.js';
-import './scripts/disney.js';
 // images
 import './images/001.webp';
 import './images/002.webp';

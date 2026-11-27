@@ -1,48 +1,53 @@
+// Loaded on its own by scripts/cases.js, so pull in the shared variables (outputs no CSS).
+@import (reference) "./variables.less";
+
 @layer fastsigns {
-  /* Section tokens, scoped to the panel (shared ones live in variables.less).
-     FastSigns intentionally uses the same red -> orange as Mastercard. */
-  .fastsigns {
-    --accent: #ff5f00;
-    --pop: #eb001b;
-  }
 
-  .fastsigns {
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Inter", system-ui, sans-serif;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    container-type: size;
-    .hero {
-      width: 100%;
-      max-width: 1280px;
-      margin-left: auto;
-      margin-right: auto;
-position: relative;
-      overflow: hidden;
-      display: flex;
-      isolation: isolate;
+	/* Section tokens, scoped to the panel (shared ones live in variables.less).
+     fastsigns intentionally uses the same red -> orange as Mastercard. */
+	.fastsigns {
+		--accent: #ff5f00;
+		--pop: #eb001b;
+	}
 
-      &:before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-		background: radial-gradient(42% 55% at 74% 50%, rgba(74, 114, 255, 0.22) 0%, rgba(74, 114, 255, 0) 70%), radial-gradient(40% 50% at 8% 85%, rgba(255, 59, 78, 0.16) 0%,rgba(255, 59, 78, 0) 70%);
-      }
+	.fastsigns {
+		background: var(--bg);
+		color: var(--text);
+		font-family: "Inter", system-ui, sans-serif;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		container-type: size;
 
-      &:after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        pointer-events: none;
-        background: linear-gradient(130deg, var(--bg) 0%, rgba(var(--ink-1--rgb), 0.55) 52%, rgba(var(--ink-1--rgb), 0.35) 62%, rgba(var(--ink-1--rgb), 0) 100% ), linear-gradient(180deg, rgba(var(--ink-1--rgb), 0) 80%, var(--bg) 100%);
-      }
-    }
+		.hero {
+			width: 100%;
+			max-width: 1280px;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+			overflow: hidden;
+			display: flex;
+			isolation: isolate;
 
-/*
+			&:before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: 0;
+				background: radial-gradient(42% 55% at 74% 50%, rgba(74, 114, 255, 0.22) 0%, rgba(74, 114, 255, 0) 70%), radial-gradient(40% 50% at 8% 85%, rgba(255, 59, 78, 0.16) 0%, rgba(255, 59, 78, 0) 70%);
+			}
+
+			&:after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: 2;
+				pointer-events: none;
+				background: linear-gradient(130deg, var(--bg) 0%, rgba(var(--ink-1--rgb), 0.55) 52%, rgba(var(--ink-1--rgb), 0.35) 62%, rgba(var(--ink-1--rgb), 0) 100%), linear-gradient(180deg, rgba(var(--ink-1--rgb), 0) 80%, var(--bg) 100%);
+			}
+		}
+
+		/*
     .kicker {
       font-family: "Inter", sans-serif;
       font-weight: 700;
@@ -75,161 +80,270 @@ position: relative;
       outline-offset: 3px;
     }
 */
-    .hero-inner {
-      position: relative;
-      /* no z-index here, so the overlay can sit between globe and text */
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr;
-      align-items: center;
-      justify-items: center;
-      gap: clamp(32px, 6cqw, 64px);
-      padding: clamp(48px, 8cqw, 104px) clamp(20px, 5cqw, 64px)
-      clamp(56px, 9cqw, 112px);
-      h1 {
-        font-size: 9cqw;
-        text-shadow:
-          1px 1px 0 #1b2140,
-          2px 2px 0 #1b2140,
-          3px 3px 0 #181d38,
-          4px 4px 0 #161a33,
-          5px 5px 0 #13172d,
-          6px 6px 0 #111427,
-          10px 14px 30px rgba(0, 0, 0, 0.75);
+		.hero-inner {
+			position: relative;
+			/* no z-index here, so the overlay can sit between globe and text */
+			width: 100%;
+			display: grid;
+			grid-template-columns: 1fr;
+			align-items: center;
+			justify-items: center;
+			gap: clamp(32px, 6cqw, 64px);
+			padding: clamp(48px, 8cqw, 104px) clamp(20px, 5cqw, 64px) clamp(56px, 9cqw, 112px);
 
-        em {
-          filter: drop-shadow(1px 1px 0 #1b2140) drop-shadow(1px 1px 0 #181d38)
-            drop-shadow(1px 1px 0 #161a33) drop-shadow(1px 1px 0 #13172d)
-            drop-shadow(1px 1px 0 #111427) drop-shadow(1px 1px 0 #0f1222)
-            drop-shadow(8px 12px 22px rgba(0, 0, 0, 0.7));
-        }
-      }
+			h1 {
+				font-size: 9cqw;
+				text-shadow:
+					1px 1px 0 #1b2140,
+					2px 2px 0 #1b2140,
+					3px 3px 0 #181d38,
+					4px 4px 0 #161a33,
+					5px 5px 0 #13172d,
+					6px 6px 0 #111427,
+					10px 14px 30px rgba(0, 0, 0, 0.75);
+
+				em {
+					filter: drop-shadow(1px 1px 0 #1b2140) drop-shadow(1px 1px 0 #181d38) drop-shadow(1px 1px 0 #161a33) drop-shadow(1px 1px 0 #13172d) drop-shadow(1px 1px 0 #111427) drop-shadow(1px 1px 0 #0f1222) drop-shadow(8px 12px 22px rgba(0, 0, 0, 0.7));
+				}
+			}
 
 
 
-      .hero-copy {
-        position: relative;
-        z-index: 3;
-        justify-self: start;
-        width: 100%;
-      }
+			.hero-copy {
+				position: relative;
+				z-index: 3;
+				justify-self: start;
+				width: 100%;
+			}
 
-      .kicker {
-        display: block;
-        margin-bottom: 20px;
-      }
+			.kicker {
+				display: block;
+				margin-bottom: 20px;
+			}
 
-      h1 {
-        margin: 0;
-        font-size: 13cqw;
-        line-height: 0.94;
-        letter-spacing: 0.005em;
-        color: var(--text);
-        text-shadow: 0 4px 32px rgba(0, 0, 0, 0.7);
-      }
+			h1 {
+				margin: 0;
+				font-size: 13cqw;
+				line-height: 0.94;
+				letter-spacing: 0.005em;
+				color: var(--text);
+				text-shadow: 0 4px 32px rgba(0, 0, 0, 0.7);
+			}
 
-      h1 > span {
-        display: block;
-        white-space: nowrap;
-      }
+			h1>span {
+				display: block;
+				white-space: nowrap;
+			}
 
-      h1 em {
-        font-style: normal;
-        color: var(--accent);
-        background: linear-gradient(
-          95deg,
-          var(--pop) 0%,
-          #b14dff 50%,
-          var(--accent) 100%
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: none;
-        filter: drop-shadow(0 0 22px rgba(74, 114, 255, 0.35));
-      }
+			h1 em {
+				font-style: normal;
+				color: var(--accent);
+				background: linear-gradient(95deg,
+						var(--pop) 0%,
+						#b14dff 50%,
+						var(--accent) 100%);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				text-shadow: none;
+				filter: drop-shadow(0 0 22px rgba(74, 114, 255, 0.35));
+			}
 
-      p {
-        margin: 28px 0 0;
-        max-width: 500px;
-        font-size: clamp(1rem, 1.5cqw, 1.15rem);
-        line-height: 1.65;
-        color: var(--text-dim);
-        text-shadow: 0 1px 14px rgba(0, 0, 0, 0.8);
-      }
-    }
+			p {
+				margin: 28px 0 0;
+				max-width: 500px;
+				font-size: clamp(1rem, 1.5cqw, 1.15rem);
+				line-height: 1.65;
+				color: var(--text-dim);
+				text-shadow: 0 1px 14px rgba(0, 0, 0, 0.8);
+			}
+		}
 
-    /* the globe sits under the gradient overlay */
-    .globe-stage {
-      position: relative;
-      z-index: 1;
-      width: min(100%, 600px);
-    }
+		/* the globe sits under the gradient overlay */
+		.globe-stage {
+			position: relative;
+			z-index: 1;
+			width: min(100%, 600px);
+		}
 
-    .globe-stage .globe-gallery {
-      width: 100%;
-    }
+		.globe-stage .globe-gallery {
+			width: 100%;
+		}
 
-@media @mq-md {
-      /* ---------- FastSigns ---------- */
-      .horizontal__panel.fastsigns .hero {
-        min-height: 0; /* cancels min(760px, 92svh) from fastsigns */
-      }
-      .horizontal__panel.fastsigns .hero-inner {
-        height: 100%;
-        padding: clamp(16px, 7cqh, 104px) clamp(20px, 5cqw, 64px);
-        gap: clamp(16px, 4cqh, 64px);
-      }
-      .horizontal__panel.fastsigns .hero-copy .kicker {
-        margin-bottom: clamp(10px, 2.5cqh, 20px);
-      }
-      .horizontal__panel.fastsigns .hero-copy h1 {
-        font-size: min(9cqw, 10cqh);
-      }
-      .horizontal__panel.fastsigns .hero-copy p {
-        margin-top: clamp(12px, 3.5cqh, 28px);
-        font-size: clamp(0.9rem, 2.3cqh, 1.15rem);
-      }
-      .horizontal__panel.fastsigns .globe-stage {
-        width: min(100%, 600px, 34cqh);
-      }
-      .hero {
-        min-height: min(760px, 92svh);
-      }
+		@media @mq-md {
 
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-        justify-items: stretch;
-      }
+			/* ---------- fastsigns ---------- */
+			.horizontal__panel.fastsigns .hero {
+				min-height: 0;
+				/* cancels min(760px, 92svh) from fastsigns */
+			}
 
-      /* headline spans both columns so it runs over the globe, like the Mastercard hero */
-      .hero-copy {
-        grid-column: ~"1 / -1";
-        grid-row: 1;
-      }
+			.horizontal__panel.fastsigns .hero-inner {
+				height: 100%;
+				padding: clamp(16px, 7cqh, 104px) clamp(20px, 5cqw, 64px);
+				gap: clamp(16px, 4cqh, 64px);
+			}
 
-      .globe-stage {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: end;
-      }
+			.horizontal__panel.fastsigns .hero-copy .kicker {
+				margin-bottom: clamp(10px, 2.5cqh, 20px);
+			}
 
-      .hero-copy h1 {
-        font-size: min(9.2cqw, 8.5rem);
-      }
-      .hero-copy h1 {
-        font-size: min(8.6cqw, 7rem);
-      }
-    }
-    
-  }
-}
+			.horizontal__panel.fastsigns .hero-copy h1 {
+				font-size: min(9cqw, 10cqh);
+			}
 
-/* ---------- Wide screens: let the hero's light bleed past the 1280px column ----------
+			.horizontal__panel.fastsigns .hero-copy p {
+				margin-top: clamp(12px, 3.5cqh, 28px);
+				font-size: clamp(0.9rem, 2.3cqh, 1.15rem);
+			}
+
+			.horizontal__panel.fastsigns .globe-stage {
+				width: min(100%, 600px, 34cqh);
+			}
+
+			.hero {
+				min-height: min(760px, 92svh);
+			}
+
+			.hero-inner {
+				grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+				justify-items: stretch;
+			}
+
+			/* headline spans both columns so it runs over the globe, like the Mastercard hero */
+			.hero-copy {
+				grid-column: ~"1 / -1";
+				grid-row: 1;
+			}
+
+			.globe-stage {
+				grid-column: 2;
+				grid-row: 1;
+				justify-self: end;
+			}
+
+			.hero-copy h1 {
+				font-size: min(9.2cqw, 8.5rem);
+			}
+
+			.hero-copy h1 {
+				font-size: min(8.6cqw, 7rem);
+			}
+		}
+
+	}
+
+	.globe-gallery {
+		position: relative;
+		width: 50em;
+		max-width: 100%;
+		aspect-ratio: 1 / 1;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+
+	.globe-gallery__collection {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
+	.globe-gallery__list {
+		position: absolute;
+		inset: 0%;
+		display: flex;
+		gap: 0.25em;
+	}
+
+	.globe-gallery__item {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		border-radius: 0.25em;
+		overflow: hidden;
+	}
+
+	.globe-gallery:not([data-globe-gallery-status="active"]) .globe-gallery__item {
+		visibility: hidden;
+	}
+
+	.globe-gallery__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media @mq-md {
+		.globe-gallery__list {
+			gap: 1em;
+		}
+
+		.globe-gallery__item {
+			border-radius: 0.5em;
+		}
+	}
+
+
+
+	////////////////////////////////////////
+
+	.globe-gallery {
+		position: relative;
+		width: 50em;
+		max-width: 100%;
+		aspect-ratio: 1 / 1;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+
+	.globe-gallery__collection {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
+	.globe-gallery__list {
+		position: absolute;
+		inset: 0%;
+		display: flex;
+		gap: 0.25em;
+	}
+
+	.globe-gallery__item {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		border-radius: 0.25em;
+		overflow: hidden;
+	}
+
+	.globe-gallery:not([data-globe-gallery-status="active"]) .globe-gallery__item {
+		visibility: hidden;
+	}
+
+	.globe-gallery__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media @mq-md {
+		.globe-gallery__list {
+			gap: 1em;
+		}
+
+		.globe-gallery__item {
+			border-radius: 0.5em;
+		}
+	}
+
+	/* ---------- Wide screens: let the hero's light bleed past the 1280px column ----------
    Overlays span the full screen. The two colored glows are re-anchored in px
    (relative to the 1280px column) so they stay behind the globe / headline
    instead of drifting outward as the layer widens. */
-@layer fastsigns {
+
 	@media @mq-xl {
 		.fastsigns .hero {
 			overflow: visible;

@@ -1,7 +1,7 @@
-# Boston Market #
-[![Netlify Status](https://api.netlify.com/api/v1/badges/92226321-012b-4815-a415-72381615950e/deploy-status)](https://boston-market.netlify.app//deploys)
+# Atomic Labs #
+[![Netlify Status](https://api.netlify.com/api/v1/badges/92226321-012b-4815-a415-72381615950e/deploy-status)](https://atomic-labs.netlify.app//deploys)
 <br><br><br>
-![Boston Market](images/og-image.jpg)
+![Atomic Labs](images/og-image.jpg)
 <br><br><br>
 <figure>
 <img src="images/apple-touch-icon.png" alt="" />
@@ -10,11 +10,11 @@
 <br><br><br>
 <figure>
 <img src="images/icon-192.png" alt="" width="192" height="192" />
-  <figcaption>icon-192x192.png (512�512) icon for Android devices</figcaption>
+  <figcaption>icon-192x192.png (512x512) icon for Android devices</figcaption>
 </figure>
 <br><br><br>
 <figure><img src="images/icon-512.png" alt="" width="512" height="512" />
-    <figcaption>icon-512.png (512�512) icon for Android devices</figcaption>
+    <figcaption>icon-512.png (512x512) icon for Android devices</figcaption>
 </figure>
 <br><br><br>
 <figure>
