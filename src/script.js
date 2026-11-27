@@ -51,6 +51,11 @@ import './images/marquee-012.webp';
 
 import './images/underground-films--landing.mp4';
 
+import './images/imf__bg--large--hi-dpi.jpg';
+import './images/imf__logo.svg';
+import './images/imf__seal.svg';
+
+
 import './images/underground-films--filter.webp';
 import './images/underground-films--landing.webp';
 import './images/underground-films--slider.webp';
