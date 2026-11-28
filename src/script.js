@@ -21,6 +21,7 @@ import './scripts/gsap-horizontal-scroll.js';
 import './scripts/intro.js';
 import './scripts/lenis.js';
 import './scripts/nav.js';
+import './scripts/gsap-footer.js';
 // images
 import './images/001.webp';
 import './images/002.webp';

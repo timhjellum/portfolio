@@ -10,6 +10,7 @@
 @import "./styles/intro.less";
 @import "./styles/nav.less";
 @import "./styles/landing.less";
+@import "./styles/footer.less";
 
 /* Case-study styles (#fs #mc #uf #tra #om #dis #imf #ho #nov) are loaded on demand
    by scripts/cases.js — only for the cases named in the URL hash. */

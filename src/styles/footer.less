@@ -1,0 +1,171 @@
+/* ==========================================================================
+   FOOTER — always loaded (imported in style.css), like the landing section.
+   Mobile first, on the site breakpoints from variables.less:
+     base     phones/tablets: one column, smaller links
+     @mq-md   larger type and spacing
+     @mq-lg   three columns side by side
+   Parallax: scripts/gsap-footer.js
+   ========================================================================== */
+@import (reference) "./variables.less";
+
+/* side padding: a minimum gutter, or wider so content stays in the 1280px column.
+   Escaped so LESS passes CSS max() through instead of evaluating it. */
+@footer-gutter-sm: ~"max(1em, calc((100% - var(--max-width)) / 2))";
+@footer-gutter-md: ~"max(2.5em, calc((100% - var(--max-width)) / 2))";
+
+.footer-wrap {
+	position: relative;
+	overflow: hidden;
+	width: 100%; // body is a centred flex column
+	background-color: var(--ink-0);
+}
+
+.footer {
+	position: relative;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	gap: 5em;
+	min-height: 100svh;
+	/* content lines up with the site's 1280px column, 1em gutter on phones */
+	padding: 2.5em @footer-gutter-sm;
+	background-color: var(--bg);
+	color: var(--text);
+	font-family: var(--font-body);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+}
+
+.demo-eyebrow {
+	margin: 0;
+	opacity: 0.5;
+	font-size: 1em;
+	font-weight: 600;
+}
+
+.demo-footer__links-row {
+	display: flex;
+	flex-flow: column;
+	gap: 2.5em;
+}
+
+.demo-footer__col {
+	display: flex;
+	flex-flow: column;
+	gap: 1em;
+	width: 100%;
+}
+
+.demo-footer__links {
+	display: flex;
+	flex-flow: column;
+	align-items: flex-start;
+	gap: 0.25em;
+}
+
+.demo-footer__a {
+	color: inherit;
+	font-size: 1.75em;
+	line-height: 1;
+	text-decoration: none;
+	overflow-wrap: anywhere; // long email addresses on narrow phones
+	transition: color 0.3s ease;
+
+	&:focus-visible {
+		outline: 2px solid var(--focus);
+		outline-offset: 4px;
+	}
+}
+
+.demo-footer__logo-row {
+	display: flex;
+	flex-flow: column;
+	gap: 1.5em;
+	color: var(--off-white);
+
+	svg {
+		display: block;
+		height: auto;
+	}
+}
+
+.footer-wrap__dark {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	pointer-events: none;
+	background-color: var(--ink-0);
+}
+
+/* ----- tablets and up: bigger type, roomier ----- */
+@media @mq-md {
+	.footer {
+		gap: 7.5em;
+		padding-left: @footer-gutter-md;
+		padding-right: @footer-gutter-md;
+	}
+
+	.demo-eyebrow {
+		font-size: 1.3125em;
+	}
+
+	.demo-footer__col {
+		gap: 3em;
+	}
+
+	.demo-footer__a {
+		font-size: 2.75em;
+	}
+}
+
+/* ----- laptops and up: three columns ----- */
+@media @mq-lg {
+	.demo-footer__links-row {
+		flex-flow: row;
+	}
+
+	.demo-footer__col {
+		width: calc(33.3333% - 1.66667em);
+	}
+
+	.demo-footer__logo-row {
+		gap: 1em;
+	}
+}
+
+/* ----- Underline link [https://osmo.supply/] ----- */
+[data-underline-link] {
+	position: relative;
+	text-decoration: none;
+}
+
+[data-underline-link]::before {
+	content: "";
+	position: absolute;
+	bottom: -0.0625em;
+	left: 0;
+	width: 100%;
+	height: 0.1em;
+	background-color: currentColor;
+	transform-origin: right;
+	transform: scaleX(0) rotate(0.001deg);
+	transition: transform 0.735s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	[data-hover]:hover [data-underline-link]::before,
+	[data-underline-link]:hover::before {
+		transform-origin: left;
+		transform: scaleX(1) rotate(0.001deg);
+	}
+
+	.demo-footer__a:hover {
+		color: var(--link-hover);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-underline-link]::before {
+		transition: none;
+	}
+}
