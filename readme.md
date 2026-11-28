@@ -26,8 +26,8 @@
 | Montserrat (variable) | Disney section titles |
 | Waltograph (TTF) | Disney "Disney's" script titles |
 | Source Serif 4 600 + italic | Novartis hero heading |
-<br><br><br>
 
+<br>## Meta Favicons ##<br>
 
 <figure>
 <img src="src/images/apple-touch-icon.png" alt="" />
