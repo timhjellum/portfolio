@@ -13,7 +13,7 @@
 | lg | 992px–1279px | laptops; desktop |
 | xl | 1280px and up | wider than the content column |
 
-<br><br><br>
+<br>## Hosted fonts ##<br>
 
 | Font names | Where used |
 | --- | --- |
