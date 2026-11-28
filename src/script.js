@@ -10,6 +10,8 @@ import './fonts/sora-800.woff2';
 import './fonts/oswald-600.woff2';
 import './fonts/montserrat-var.woff2';
 import './fonts/waltographUI.ttf';
+import './fonts/source-serif-4-600.woff2';
+import './fonts/source-serif-4-600-italic.woff2';
 // scripts
 // case studies first: it stamps the #hash-selected sections into the page
 // before the scripts below initialise (see scripts/cases.js)

@@ -4,12 +4,12 @@
 /* ==========================================================================
    HONEYWELL AEROSPACE — case-study panel (#ho)
    Mobile first, dark only. Page background and text tones come from
-   variables.less; only the Honeywell accent colours are defined here.
+   variables.less; only the Honeywell Aerospace accent colours are defined here.
    ========================================================================== */
 
 .ho {
 	--accent: #59b8ee;
-	--red: #ee3124;
+	--orange: #ff4f00; /* Honeywell Aerospace orange (Honeywell corporate is red #ee3124) */
 
 	/* ---------- fill the horizontal-scroll panel ---------- */
 	&.horizontal__panel > .horizontal__panel-inner {
@@ -47,10 +47,20 @@
 		background: linear-gradient(180deg, var(--bg) 0%, rgba(var(--ink-1--rgb), 0) 16%, rgba(var(--ink-1--rgb), 0) 82%, var(--bg) 100%);
 	}
 
+	/* copy + iPad: one column on phones (iPad hidden), side by side from tablets */
 	.hero-inner {
 		position: relative;
 		z-index: 1;
 		width: 100%;
+		max-width: var(--max-width);
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr;
+		align-items: center;
+		gap: clamp(24px, 5vw, 72px);
+	}
+
+	.hero-copy {
 		max-width: 640px;
 	}
 
@@ -76,7 +86,7 @@
 
 		em {
 			font-style: normal;
-			color: var(--red);
+			color: var(--orange);
 		}
 	}
 
@@ -96,8 +106,165 @@
 			padding: clamp(56px, 10vw, 96px) clamp(20px, 6vw, 64px) clamp(64px, 10vw, 100px);
 		}
 
+		.hero-inner {
+			grid-template-columns: minmax(0, 1fr) auto;
+		}
+
 		h1 {
 			margin-bottom: 26px;
+			font-size: clamp(2.2rem, 4.6vw, 5rem); /* shares the row with the iPad */
+		}
+	}
+
+	/* ==========================================================================
+	   iPAD — shown at a slight 3D angle, turned toward the copy
+	   (class names .iphone / .siri kept from the original device mock-up)
+	   ========================================================================== */
+	.iphone-stage {
+		/* size follows the screen height so the iPad always fits the panel */
+		--iphone-height: min(68dvh, 620px);
+		--iphone-width: calc(var(--iphone-height) * 0.75); /* 3 : 4, same as tablet-ui.webp */
+		--iphone-padding: 2px;
+		--iphone-border-width: 1px;
+		--iphone-border-top-color: silver;
+		--iphone-border-right-color: #999;
+		--iphone-border-bottom-color: #333;
+		--iphone-border-left-color: silver;
+		--iphone-device-background: #000;
+		--iphone-device-border-radius: 30px;
+		--screen-background-color: #000;
+		--screen-inset: calc((var(--iphone-padding) + var(--iphone-border-width)) * 2);
+
+		display: none; /* phones: the panel is only 30em tall, so copy only */
+		perspective: 1800px;
+		perspective-origin: 30% 40%;
+		animation: ho-device-in 0.9s 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+	}
+
+	.iphone {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		container-type: inline-size;
+		position: relative;
+		width: var(--iphone-width);
+		height: var(--iphone-height);
+		border-top: var(--iphone-border-width) solid var(--iphone-border-top-color);
+		border-right: var(--iphone-border-width) solid var(--iphone-border-right-color);
+		border-bottom: var(--iphone-border-width) solid var(--iphone-border-bottom-color);
+		border-left: var(--iphone-border-width) solid var(--iphone-border-left-color);
+		background-color: var(--iphone-device-background);
+		border-radius: var(--iphone-device-border-radius);
+
+		/* the tilt: right edge pushed back, top leaning away */
+		transform: rotateY(-24deg) rotateX(8deg) rotateZ(2deg);
+		transform-style: preserve-3d;
+		transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+		/* stacked hard shadows read as the aluminium edge; the soft one grounds it */
+		box-shadow:
+			1px 1px 0 #3a3a40,
+			2px 2px 0 #2e2e34,
+			3px 3px 0 #26262b,
+			4px 4px 0 #1f1f24,
+			5px 5px 0 #19191d,
+			6px 6px 0 #141418,
+			40px 50px 80px rgba(0, 0, 0, 0.65),
+			0 0 60px rgba(89, 184, 238, 0.12);
+
+		&--button-1,
+		&--button-2,
+		&--button-3,
+		&--button-4 {
+			position: absolute;
+			width: 2px;
+			background-color: silver;
+		}
+
+		&--button-1 {
+			left: -1cqw;
+			top: 33cqi;
+			height: 10cqi;
+			border-right: 1px solid var(--screen-background-color);
+		}
+
+		&--button-2 {
+			left: -1cqw;
+			top: 53cqi;
+			height: 20cqi;
+			border-right: 1px solid var(--screen-background-color);
+		}
+
+		&--button-3 {
+			left: -1cqw;
+			top: 78cqi;
+			height: 20cqi;
+			border-right: 1px solid var(--screen-background-color);
+		}
+
+		&--button-4 {
+			right: -1cqw;
+			top: 58cqi;
+			height: 25cqi;
+			border-left: 1px solid var(--screen-background-color);
+			background-color: #666;
+		}
+	}
+
+	/* eases toward flat on hover */
+	.iphone-stage:hover .iphone {
+		transform: rotateY(-10deg) rotateX(3deg) rotateZ(1deg);
+	}
+
+	/* the screen */
+	.siri {
+		position: relative;
+		width: calc(var(--iphone-width) - var(--screen-inset));
+		height: calc(var(--iphone-height) - var(--screen-inset));
+		border-radius: var(--iphone-device-border-radius);
+		overflow: clip;
+		background: #111 url("../images/tablet-ui.webp") center / cover no-repeat;
+
+		/* glass glare */
+		&::after {
+			content: "";
+			position: absolute;
+			top: -20%;
+			left: 50%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+			transform: rotate(-17deg);
+			pointer-events: none;
+		}
+	}
+
+	@keyframes ho-device-in {
+		from {
+			opacity: 0;
+			transform: translate3d(40px, 24px, 0);
+		}
+
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	@media @mq-md {
+		.iphone-stage {
+			display: block;
+			justify-self: end;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.iphone-stage {
+			animation: none;
+		}
+
+		.iphone {
+			transition: none;
 		}
 	}
 }
