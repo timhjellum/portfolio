@@ -13,7 +13,7 @@
 | lg | 992px–1279px | laptops; desktop |
 | xl | 1280px and up | wider than the content column |
 
-<br>## Hosted fonts ##<br>
+<br>## Hosted fonts<br>
 
 | Font names | Where used |
 | --- | --- |
@@ -27,7 +27,7 @@
 | Waltograph (TTF) | Disney "Disney's" script titles |
 | Source Serif 4 600 + italic | Novartis hero heading |
 
-<br>## Meta Favicons ##<br>
+<br>## Meta Favicons<br>
 
 <figure>
 <img src="src/images/apple-touch-icon.png" alt="" />
