@@ -1,7 +1,7 @@
 # Atomic Labs #
 [![Netlify Status](https://api.netlify.com/api/v1/badges/92226321-012b-4815-a415-72381615950e/deploy-status)](https://atomic-labs.netlify.app//deploys)
 <br><br><br>
-![Atomic Labs](images/og-image.jpg)
+![Atomic Labs](src/images/og-image.jpg)
 <br><br><br>
 
 
