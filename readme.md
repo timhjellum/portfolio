@@ -12,6 +12,20 @@
 | md | 768px–991px | tablets; horizontal case-study scroller turns on |
 | lg | 992px–1279px | laptops; desktop |
 | xl | 1280px and up | wider than the content column |
+<br><br><br>
+| Font names | Where used |
+| --- | --- |
+| Inter (variable 100–900) | body, kickers, case-study text |
+| Merriweather 500 + italic | landing rotating-text heading |
+| Poppins 600 | display / tab headings |
+| IBM Plex Mono 500 | eyebrows, numbers, credit card |
+| Sora 800 | Mastercard hero h1 |
+| Oswald 600 | Orlando Magic badge / headings |
+| Montserrat (variable) | Disney section titles |
+| Waltograph (TTF) | Disney "Disney's" script titles |
+| Source Serif 4 600 + italic | Novartis hero heading |
+<br><br><br>
+
 
 <figure>
 <img src="src/images/apple-touch-icon.png" alt="" />
@@ -29,7 +43,7 @@
 <br><br><br>
 <figure>
 <img src="src/images/icon-mask.png" alt="" width="512" height="512" />
-  <figcaption>icon-mask.png (512x512) - mask is simulated</figcaption>
+  <figcaption>icon-mask.png (512x512)</figcaption>
 </figure>
 <br>
 <br>
