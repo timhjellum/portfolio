@@ -12,7 +12,9 @@
 | md | 768px–991px | tablets; horizontal case-study scroller turns on |
 | lg | 992px–1279px | laptops; desktop |
 | xl | 1280px and up | wider than the content column |
+
 <br><br><br>
+
 | Font names | Where used |
 | --- | --- |
 | Inter (variable 100–900) | body, kickers, case-study text |
