@@ -17,6 +17,24 @@ const config = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		clean: true, // remove old files (e.g. the replaced hero.png) on each build
+		// versioned file names in production: the hash changes only when a file's content changes,
+		// so browsers can cache JS/CSS forever and still get updates right after a deploy
+		filename: isProduction ? '[name].[contenthash:8].js' : '[name].js',
+		chunkFilename: isProduction ? '[name].[contenthash:8].js' : '[name].js',
+	},
+	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				// GSAP + Lenis in their own file: they rarely change, so they stay cached across deploys
+				vendor: {
+					test: /[\\/]node_modules[\\/](gsap|lenis)[\\/]/,
+					type: /javascript/, // JS only; lenis.css stays in main.css
+					name: 'vendor',
+					chunks: 'all',
+					enforce: true,
+				},
+			},
+		},
 	},
 	devServer: {
 		open: true,
@@ -31,6 +49,7 @@ const config = {
 		new HtmlWebpackPlugin({
 			template: 'googlecee6295620a8d037.html',
 			filename: 'googlecee6295620a8d037.html',
+			inject: false, // Google site verification: the file must contain only its verification line
 		}),
 	],
 	module: {
@@ -75,7 +94,12 @@ const config = {
 module.exports = () => {
 	if (isProduction) {
 		config.mode = 'production';
-		config.plugins.push(new MiniCssExtractPlugin());
+		config.plugins.push(
+			new MiniCssExtractPlugin({
+				filename: '[name].[contenthash:8].css',
+				chunkFilename: '[name].[contenthash:8].css',
+			})
+		);
 	} else {
 		config.mode = 'development';
 	}

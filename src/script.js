@@ -52,6 +52,8 @@ import './images/marquee-011.webp';
 import './images/marquee-012.webp';
 
 import './images/underground-films--landing.mp4';
+import './images/novartis__helix.mp4';
+import './images/novartis__helix.webp';
 
 import './images/imf__bg--large--hi-dpi.jpg';
 import './images/imf__logo.svg';

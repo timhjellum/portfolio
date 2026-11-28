@@ -53,6 +53,7 @@ const CASES = {
 	},
 	nov: {
 		css: () => import(/* webpackChunkName: "case-nov" */ '../styles/novartis.less'),
+		js: () => import(/* webpackChunkName: "case-nov" */ './novartis.js'),
 	},
 	imf: {
 		css: () => import(/* webpackChunkName: "case-imf" */ '../styles/international-monetary-fund.less'),
