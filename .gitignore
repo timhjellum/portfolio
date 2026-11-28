@@ -48,6 +48,7 @@ Thumbs.db
 *.wmv
 
 !src/images/underground-films--landing.mp4
+!src/images/novartis__helix.mp4
 
 # Windows folder settings
 desktop.ini
