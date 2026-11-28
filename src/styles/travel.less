@@ -31,7 +31,9 @@
   background-image: url("../images/trip__bg.webp");
   background-size: cover;
   background-position: center 62%;
-  container-type: size;
+  /* no size containment on phones: it would collapse this auto-height hero to 0
+     (size containment ignores content). It comes back from @md, where the hero has a real height. */
+  container-type: normal;
 }
 .travel .hero:before {
   content: "";
@@ -113,8 +115,17 @@
   margin-bottom: 20px;
 }
 
+/* phones: panels stack vertically; let this one grow to fit its content
+   instead of the scroller's fixed 30em */
+.horizontal__panel.travel {
+  height: auto;
+}
+
 /* ----- one screen tall: hero fills the space above the marquee ----- */
 @media @mq-md {
+  .horizontal__panel.travel {
+    height: 100%;
+  }
   .horizontal__panel.travel > .horizontal__panel-inner {
     display: flex;
     flex-direction: column;
@@ -123,6 +134,7 @@
   .horizontal__panel.travel .hero {
     flex: 1 1 auto;
     min-height: 0;
+    container-type: size;
   }
   .horizontal__panel.travel .marquee-container {
     flex: none;

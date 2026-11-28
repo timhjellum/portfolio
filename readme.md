@@ -3,6 +3,16 @@
 <br><br><br>
 ![Atomic Labs](images/og-image.jpg)
 <br><br><br>
+
+
+| Tier | Width | Targeted media devices |
+| --- | --- | --- |
+| base | 320px–479px | phones |
+| sm | 480px–767px | large phones |
+| md | 768px–991px | tablets; horizontal case-study scroller turns on |
+| lg | 992px–1279px | laptops; desktop |
+| xl | 1280px and up | wider than the content column |
+
 <figure>
 <img src="images/apple-touch-icon.png" alt="" />
   <figcaption>apple-touch-icon.png (180x180) icon for Android devices</figcaption>

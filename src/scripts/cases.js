@@ -6,6 +6,8 @@
      /#uf              Underground Films only
    Codes can be in any order or case; unknown codes are ignored.
    If the hash has no recognised code, DEFAULT_CASES is shown.
+     /#dev             every case study + the breakpoint overlay
+                       (styles/dev.less, scripts/dev.js)
 
    Each case study's HTML lives in index.html inside
    <template data-case="xx">. Only the selected templates are
@@ -67,16 +69,29 @@ const ALL = Object.keys(CASES);
 // Edit this list to change what a plain link shows, e.g. ['fs', 'mc', 'dis'].
 const DEFAULT_CASES = ['fs', 'mc', 'uf', 'tra', 'om', 'dis', 'imf', 'ho', 'nov'];
 
+const asked = decodeURIComponent(location.hash.replace(/^#/, ''))
+	.split(',')
+	.map((s) => s.trim().toLowerCase())
+	.filter(Boolean);
+
+// #dev anywhere in the hash: every case study, plus the breakpoint overlay.
+const DEV = asked.includes('dev');
+
 function selectedCases() {
-	const asked = decodeURIComponent(location.hash.replace(/^#/, ''))
-		.split(',')
-		.map((s) => s.trim().toLowerCase())
-		.filter(Boolean);
+	if (DEV) return ALL;
 	const picked = ALL.filter((code) => asked.includes(code));
 	return picked.length ? picked : ALL.filter((code) => DEFAULT_CASES.includes(code));
 }
 
 const on = selectedCases();
+
+if (DEV) {
+	document.documentElement.classList.add('dev');
+	Promise.all([
+		import(/* webpackChunkName: "dev" */ '../styles/dev.less'),
+		import(/* webpackChunkName: "dev" */ './dev.js'),
+	]).catch((err) => console.error('[cases] #dev overlay failed', err));
+}
 document.documentElement.dataset.cases = on.join(' ');
 
 // 1. HTML — runs as soon as this module is evaluated (before DOMContentLoaded),

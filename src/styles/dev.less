@@ -1,0 +1,118 @@
+/* ==========================================================================
+   DEV OVERLAY — loaded only when the URL hash contains #dev (scripts/cases.js)
+   Shows which of the site's real mobile-first breakpoints is active.
+   The widths come straight from variables.less, so this can't drift:
+     base   0–479px    phones (no media query)
+     @mq-sm 480px+     large phones
+     @mq-md 768px+     tablets / horizontal case-study scroller on
+     @mq-lg 992px+     laptops / desktop nav
+     @mq-xl 1280px+    wider than the content column
+   ========================================================================== */
+@import (reference) "./variables.less";
+
+@sm-max: (@bp-md - 1);
+@md-max: (@bp-lg - 1);
+@lg-max: (@bp-xl - 1);
+@base-max: (@bp-sm - 1);
+
+/* everything the overlay outlines; cases.js puts data-case on each stamped section */
+@dev-sections: ~".landing, .intro, [data-case], .footer";
+
+:root {
+	--xs: #b9212c; // base — phones
+	--sm: #8a8a2e; // @mq-sm — large phones
+	--md: #25362b; // @mq-md — tablets
+	--lg: #63171f; // @mq-lg — laptops
+	--xl: #cd559c; // @mq-xl — desktop and up
+	--out-of-bounds: #fff;
+	--portrait: #000;
+	--landscape: #fff;
+	--output-border-size: 3px;
+	--element-border-size: 5px;
+
+	/* below the site's 320px minimum */
+	--tier: var(--out-of-bounds);
+	--tier-ink: #d00;
+	--tier-label: "below 320px · under the site minimum";
+}
+
+@media (min-width: 320px) {
+	:root {
+		--tier: var(--xs);
+		--tier-ink: #fff;
+		--tier-label: "base · phone · 320px–@{base-max}";
+	}
+}
+@media @mq-sm {
+	:root {
+		--tier: var(--sm);
+		--tier-label: "sm · large phone · @{bp-sm}–@{sm-max}";
+	}
+}
+@media @mq-md {
+	:root {
+		--tier: var(--md);
+		--tier-label: "md · tablet · @{bp-md}–@{md-max}";
+	}
+}
+@media @mq-lg {
+	:root {
+		--tier: var(--lg);
+		--tier-label: "lg · laptop · @{bp-lg}–@{lg-max}";
+	}
+}
+@media @mq-xl {
+	:root {
+		--tier: var(--xl);
+		--tier-label: "xl · desktop · @{bp-xl}+";
+	}
+}
+
+#output {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 5000;
+	display: flex;
+	gap: 0.6em;
+	align-items: baseline;
+	padding: 0.1em 0.5em;
+	font: 600 1rem/1.4 system-ui, sans-serif;
+	font-variant-numeric: tabular-nums;
+	color: var(--tier-ink);
+	background-color: var(--tier);
+	border: var(--output-border-size) solid var(--portrait);
+	pointer-events: none; // never blocks the nav underneath
+
+	&::before {
+		content: var(--tier-label);
+	}
+
+	/* live width, written by scripts/dev.js */
+	.output__px {
+		opacity: 0.75;
+	}
+
+	&::after {
+		opacity: 0.75;
+	}
+}
+
+@media (orientation: portrait) {
+	#output {
+		border-color: var(--portrait);
+		&::after { content: "portrait"; }
+	}
+}
+@media (orientation: landscape) {
+	#output {
+		border-color: var(--landscape);
+		&::after { content: "landscape"; }
+	}
+}
+
+/* outline, not border: it takes no space, so dev mode doesn't change the layout it's measuring */
+@{dev-sections} {
+	outline: var(--element-border-size) solid var(--tier);
+	outline-offset: calc(var(--element-border-size) * -1);
+}
